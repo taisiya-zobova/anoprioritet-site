@@ -794,7 +794,9 @@
     .arrow { display: none; }
 
     /* Footer */
-    .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+    .foot-grid { grid-template-columns: repeat(3, 1fr); gap: 20px 16px; }
+    .foot-info { grid-column: 1 / -1; }
+    .foot-grid > div:last-child { grid-column: 1 / -1; }
     .foot-col-h { visibility: hidden; margin: 0 0 8px; }
   }
 
