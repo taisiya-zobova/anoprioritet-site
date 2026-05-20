@@ -793,54 +793,36 @@
   .arrow.l { left: -42px; }
   .arrow.r { right: -42px; }
 
-  /* ============ FOOTER (10) ============ */
+  /* ============ FOOTER ============ */
   footer {
     border-top: 1px solid var(--line);
     padding: 56px 0 32px;
     margin-top: 24px;
   }
-  .foot-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 0.8fr 0.8fr;
-    gap: 36px;
-    align-items: start;
+  .foot-top {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
   }
-  .foot-h {
-    font-family: var(--serif);
-    font-size: 22px;
-    color: var(--ink);
-    margin: 0 0 18px;
-    font-weight: 400;
+  .foot-brand { flex-shrink: 0; }
+  .foot-brand-logo {
+    height: 52px;
+    width: auto;
+    display: block;
+    object-fit: contain;
   }
-  .foot-info p {
-    font-size: 12px;
-    color: var(--ink-2);
-    margin: 0 0 8px;
-    line-height: 1.55;
+  .foot-nav-cols {
+    display: flex;
+    gap: 64px;
+    flex: 1;
   }
-  .foot-info p svg {
-    width: 12px; height: 12px;
-    color: var(--accent);
-    margin-right: 6px;
-    vertical-align: -1px;
-  }
-  .foot-callback {
-    color: var(--accent);
-    font-size: 12px;
-    margin-top: 12px;
-    display: inline-block;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 1px;
-    transition: opacity 0.15s;
-  }
-  .foot-callback:hover { opacity: 0.7; }
-  .foot-col-h {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: var(--muted-2);
+  .foot-col { flex: 1; }
+  .foot-col-label {
+    font-size: 10.5px;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    margin: 4px 0 14px;
-    visibility: hidden;
+    color: var(--muted-2);
+    margin-bottom: 14px;
   }
   .foot-col ul {
     list-style: none; padding: 0; margin: 0;
@@ -849,21 +831,21 @@
   .foot-col li {
     font-size: 12px;
     color: var(--ink-2);
-    cursor: pointer;
-    transition: color 0.15s;
+    line-height: 1.5;
   }
-  .foot-col li:hover { color: var(--accent); }
+  .foot-col li a { color: inherit; transition: color 0.15s; }
+  .foot-col li a:hover { color: var(--accent); }
   .foot-socials {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 16px;
+    margin-top: 12px;
   }
   .foot-soc-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 12.5px;
+    font-size: 12px;
     color: var(--ink-2);
     transition: color 0.15s;
   }
@@ -1357,49 +1339,46 @@
 <!-- ============ 10 FOOTER ============ -->
 <footer id="contacts">
   <div class="wrap">
-    <div class="sec-head" style="margin-bottom:28px;">
-      <span class="sec-num">08</span>
-      <h2 class="sec-title">Контакты</h2>
-    </div>
-
-    <div class="foot-grid">
-      <div class="foot-info">
-        <p>
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4c0-1 .8-2 2-2h1l1.5 3-1.5 1c.5 2 2 3.5 4 4l1-1.5L14 10v1c0 1.2-.8 2-2 2-5 0-9-4-9-9z"/></svg>
-          +7 (925) 295-52-45
-        </p>
-        <div class="foot-socials">
-          <a href="https://vk.com/ano_prioritet" class="foot-soc-link" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8.4 12c-3.6 0-5.7-2.5-5.8-6.6h1.8c.1 3 1.4 4.3 2.5 4.6V5.4h1.7v2.6c1-.1 2.1-1.3 2.5-2.6h1.7c-.3 1.6-1.5 2.8-2.3 3.3 1 .4 2.3 1.5 2.8 3.3h-1.9c-.4-1.4-1.4-2.4-2.7-2.6V12h-.3z"/></svg>
-            ВКонтакте
-          </a>
-          <a href="https://t.me/ano_prioritet" class="foot-soc-link" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M14.5 2.3 1.8 7.2c-.9.4-.9.9-.2 1.1l3.3 1 1.2 3.7c.2.4.4.6.7.6.3 0 .5-.1.7-.4l1.7-1.6 3.4 2.5c.6.4 1.1.2 1.3-.6l2.3-10.9c.2-.9-.4-1.4-1.7-.3z"/></svg>
-            Telegram
-          </a>
-          <a href="https://max.ru/ano_prioritet" class="foot-soc-link" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg>
-            MAX
-          </a>
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="лого/Приоритет.png" alt="АНО Приоритет" class="foot-brand-logo"/>
+      </div>
+      <div class="foot-nav-cols">
+        <div class="foot-col">
+          <div class="foot-col-label">Разделы</div>
+          <ul>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#dirs">Направления</a></li>
+            <li><a href="#projects">Проекты</a></li>
+            <li><a href="#analytics">Аналитика</a></li>
+            <li><a href="#caps">Возможности</a></li>
+            <li><a href="#partners">Партнёры</a></li>
+          </ul>
         </div>
-      </div>
-
-      <div class="foot-col">
-        <div class="foot-col-h">.</div>
-        <ul>
-          <li><a href="#about">О нас</a></li>
-          <li><a href="#dirs">Направления</a></li>
-          <li><a href="#projects">Проекты</a></li>
-          <li><a href="#analytics">Аналитика</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <div class="foot-col-h">.</div>
-        <ul>
-          <li><a href="#caps">Возможности</a></li>
-          <li><a href="#partners">Партнёры</a></li>
-          <li><a href="#contacts">Контакты</a></li>
-        </ul>
+        <div class="foot-col">
+          <div class="foot-col-label">Контакты</div>
+          <ul>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-1px;margin-right:5px"><path d="M3 4c0-1 .8-2 2-2h1l1.5 3-1.5 1c.5 2 2 3.5 4 4l1-1.5L14 10v1c0 1.2-.8 2-2 2-5 0-9-4-9-9z"/></svg>
+              +7 (925) 295-52-45
+            </li>
+          </ul>
+          <div class="foot-col-label" style="margin-top:20px">Социальные сети</div>
+          <div class="foot-socials">
+            <a href="https://vk.com/ano_prioritet" class="foot-soc-link" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8.4 12c-3.6 0-5.7-2.5-5.8-6.6h1.8c.1 3 1.4 4.3 2.5 4.6V5.4h1.7v2.6c1-.1 2.1-1.3 2.5-2.6h1.7c-.3 1.6-1.5 2.8-2.3 3.3 1 .4 2.3 1.5 2.8 3.3h-1.9c-.4-1.4-1.4-2.4-2.7-2.6V12h-.3z"/></svg>
+              ВКонтакте
+            </a>
+            <a href="https://t.me/ano_prioritet" class="foot-soc-link" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M14.5 2.3 1.8 7.2c-.9.4-.9.9-.2 1.1l3.3 1 1.2 3.7c.2.4.4.6.7.6.3 0 .5-.1.7-.4l1.7-1.6 3.4 2.5c.6.4 1.1.2 1.3-.6l2.3-10.9c.2-.9-.4-1.4-1.7-.3z"/></svg>
+              Telegram
+            </a>
+            <a href="https://max.ru/ano_prioritet" class="foot-soc-link" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg>
+              MAX
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
