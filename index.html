@@ -374,19 +374,25 @@
   .a-item {
     display: flex;
     gap: 16px;
-    padding: 16px 0;
+    padding: 16px 10px;
     border-bottom: 1px solid var(--line-2);
-    align-items: flex-start;
+    align-items: center;
     transition: background 0.15s;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
   }
   .a-item:first-child { padding-top: 4px; }
   .a-item:last-child { border-bottom: 0; }
-  .a-item:hover { background: var(--bg-tint); margin: 0 -8px; padding-left: 8px; padding-right: 8px; }
+  .a-item:hover { background: var(--bg-tint); }
   .a-icon {
     width: 22px; height: 22px;
     color: var(--muted);
     flex-shrink: 0;
-    margin-top: 1px;
   }
   .a-title {
     flex: 1;
@@ -394,22 +400,169 @@
     color: var(--ink-2);
     line-height: 1.55;
   }
-  .a-date {
-    font-size: 11.5px;
-    color: var(--muted-2);
-    flex-shrink: 0;
-    margin-left: 12px;
-  }
-  .analytics-foot {
-    margin-top: 24px;
-    font-size: 12.5px;
+  .a-arrow {
+    font-size: 14px;
     color: var(--accent);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.15s;
+    flex-shrink: 0;
+    transition: transform 0.15s;
   }
-  .analytics-foot:hover { color: var(--accent-soft); }
+  .a-item:hover .a-arrow { transform: translateX(3px); }
+
+  /* ============ MODAL ============ */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20,24,31,0.6);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: #fff;
+    width: 100%;
+    max-width: 960px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+  .modal-title {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 400;
+    margin: 0;
+    max-width: 80%;
+    line-height: 1.3;
+  }
+  .modal-close {
+    width: 32px; height: 32px;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .modal-close:hover { color: var(--ink); border-color: var(--ink); }
+  .modal-body {
+    overflow: hidden;
+    flex: 1;
+    position: relative;
+  }
+  .slides-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.35s ease;
+  }
+  .slide {
+    min-width: 100%;
+    display: flex;
+    gap: 28px;
+    padding: 28px;
+    overflow-y: auto;
+    align-items: flex-start;
+  }
+  .slide-photos {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .slide-photo {
+    width: 180px;
+    aspect-ratio: 3/4;
+    background: var(--bg-tint);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--muted-2);
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+  }
+  .slide-text {
+    flex: 1;
+    font-size: 12.5px;
+    color: var(--ink-2);
+    line-height: 1.7;
+  }
+  .slide-text h3 {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 0 0 14px;
+    line-height: 1.3;
+  }
+  .slide-text ul {
+    padding-left: 18px;
+    margin: 8px 0;
+  }
+  .slide-text ul li { margin-bottom: 5px; }
+  .slide-text .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .slide-stat {
+    background: var(--bg-tint);
+    border: 1px solid var(--line);
+    padding: 10px 14px;
+    min-width: 110px;
+  }
+  .slide-stat .sv {
+    font-family: var(--serif);
+    font-size: 24px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .slide-stat .sl {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.35;
+  }
+  .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    border-top: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+  .modal-counter {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .modal-nav { display: flex; gap: 8px; }
+  .modal-btn {
+    width: 32px; height: 32px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .modal-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .modal-btn:disabled { opacity: 0.3; cursor: default; }
 
   /* ============ CAPABILITIES + NUMBERS (05 / 06) ============ */
   .caps {
@@ -1047,39 +1200,30 @@
         <div class="sec-head">
           <span class="sec-num">04</span>
           <h2 class="sec-title">Аналитика и исследования</h2>
-          <a href="#" class="sec-link">Все материалы →</a>
         </div>
         <div class="analytics-list">
-          <a class="a-item" href="#">
+          <button class="a-item" data-research="0">
             <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
               <path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h6M10 16h6"/>
             </svg>
-            <div class="a-title">Практики стратегического планирования в субъектах РФ: сравнительный анализ</div>
-            <div class="a-date">16.05.2024</div>
-          </a>
-          <a class="a-item" href="#">
+            <div class="a-title">Три волны опросов ветеранов и участников СВО</div>
+            <div class="a-arrow">→</div>
+          </button>
+          <button class="a-item" data-research="1">
             <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
               <path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h6M10 16h6"/>
             </svg>
-            <div class="a-title">Оценка влияния регулирования на инвестиционную активность</div>
-            <div class="a-date">02.05.2024</div>
-          </a>
-          <a class="a-item" href="#">
+            <div class="a-title">Два исследования по теме распространения фейков в интернете</div>
+            <div class="a-arrow">→</div>
+          </button>
+          <button class="a-item" data-research="2">
             <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
               <path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h6M10 16h6"/>
             </svg>
-            <div class="a-title">Тренды развития цифровых технологий в государственном управлении</div>
-            <div class="a-date">18.04.2024</div>
-          </a>
-          <a class="a-item" href="#">
-            <svg class="a-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h6M10 16h6"/>
-            </svg>
-            <div class="a-title">Социальные эффекты национальных проектов: что показали данные</div>
-            <div class="a-date">05.04.2024</div>
-          </a>
+            <div class="a-title">Изучение отношения россиян к государственным праздникам</div>
+            <div class="a-arrow">→</div>
+          </button>
         </div>
-        <a href="#" class="analytics-foot">Перейти в раздел аналитики →</a>
       </div>
     </div>
   </div>
@@ -1311,7 +1455,224 @@
   </div>
 </footer>
 
+<!-- ============ MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <button class="modal-close" id="modalClose" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="slides-track" id="slidesTrack"></div>
+    </div>
+    <div class="modal-footer">
+      <span class="modal-counter" id="modalCounter"></span>
+      <div class="modal-nav">
+        <button class="modal-btn" id="modalPrev" aria-label="Предыдущий">&#8249;</button>
+        <button class="modal-btn" id="modalNext" aria-label="Следующий">&#8250;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+  // Research data
+  const research = [
+    {
+      title: 'Три волны опросов ветеранов и участников СВО',
+      slides: [
+        {
+          heading: 'Итоги социологического исследования',
+          text: `АНО «Приоритет» провели опрос, в котором приняло участие более <strong>1 000 ветеранов и участников СВО</strong>. Для получения релевантного результата были опрошены все категории военнослужащих — от рядовых до высших офицеров. Основную долю составили военнослужащие в возрасте <strong>30–44 лет</strong> (51,3%).`,
+          stats: [
+            { v: '1 000+', l: 'участников опроса' },
+            { v: '28,8%', l: 'важнейший приоритет — социальные гарантии' },
+            { v: '28,7%', l: 'приоритет — трудоустройство' },
+            { v: '38%', l: 'получают информацию через мессенджеры' },
+          ],
+          extra: 'Каждый третий респондент признался, что недостаточно знает о мерах социальной поддержки. Около 20% военнослужащих не смогли определить свои планы после окончания службы.'
+        },
+        {
+          heading: 'Социальный портрет участников СВО',
+          text: 'Во время проведения СВО на защиту Родины встали люди всех возрастов и социальных категорий. Профессии участников до службы:',
+          list: [
+            'Рабочий — 31,4%',
+            'Специалист / служащий / ИТР — 13,0%',
+            'Безработный / временно не работающий — 12,9%',
+            'Кадровый военный — 10,2%',
+            'Руководитель среднего звена — 7,8%',
+            'Пенсионер — 7,7%',
+            'Владелец бизнеса / предприниматель — 7,0%',
+            'Госслужащий — 6,8%',
+          ],
+          extra: '40% кадровых военных планируют продолжить службу в ВС РФ. Каждый третий руководитель или предприниматель намерен вернуться к своей деятельности. 32% студентов планируют продолжить образование.'
+        },
+        {
+          heading: 'Путь героя — третья волна (июль–август 2025)',
+          text: 'В опросе приняли участие более <strong>1 000 человек</strong> — преимущественно мужчины в возрасте 36–44 лет. Основные тренды:',
+          list: [
+            'Профессиональная неопределённость: более 40% не знают, чем будут заниматься после СВО',
+            'Высокие образовательные запросы: 48% заинтересованы в обучении или освоении новых компетенций',
+            'Ориентированность на практику: наибольший интерес — госуправление, рабочие профессии, IT, инженерия',
+            '49% предпочитают дистанционное или заочное обучение',
+          ],
+          extra: 'Исследование подтверждает значительный спрос среди ветеранов на реинтеграцию в социально-трудовую сферу. Успешная адаптация ветеранов СВО — ключевой фактор социальной стабильности.'
+        }
+      ]
+    },
+    {
+      title: 'Два исследования по теме распространения фейков в интернете',
+      slides: [
+        {
+          heading: '«Фейки в интернете» — первая волна (март–апрель 2025)',
+          text: 'В опросе приняло участие порядка <strong>3 000 человек</strong>. Исследование выявило ключевые тенденции восприятия фейковой информации.',
+          stats: [
+            { v: '64%', l: 'высокий уровень образования участников' },
+            { v: '43%', l: 'используют официальные источники для проверки' },
+            { v: '54%', l: 'хотят узнать больше о распознавании фейков' },
+            { v: '10%', l: 'знакомы со специальными ресурсами фактчекинга' },
+          ],
+          extra: 'АНО «Приоритет» реализует проект «БАН — фейков нет» и обучает граждан противодействию недостоверной информации.'
+        },
+        {
+          heading: 'Сравнительный анализ двух волн (март и сентябрь 2025)',
+          text: 'Основные тренды сравнительного анализа:',
+          list: [
+            'Фейков в соцсетях стало меньше: 31% → 27%. Но в мессенджерах больше: 23% → 25%',
+            'Обращение к официальным источникам выросло: 43% → 61%',
+            '35% опрошенных верили фейкам — на 7% больше, чем в первую волну',
+            'Желающих научиться выявлять фейки стало больше: 54% → 56%',
+            'Доля считающих фейки «очень серьёзной» проблемой: 35% → 56%',
+          ],
+          extra: 'АНО «Приоритет» продолжит изучать тренды и тенденции распространения фейковой информации в 2026 году.'
+        }
+      ]
+    },
+    {
+      title: 'Изучение отношения россиян к государственным праздникам',
+      slides: [
+        {
+          heading: 'День Государственного флага',
+          text: 'Команда «Приоритет» провела опрос — узнали, кто отмечает День флага, что он значит для россиян. В исследовании приняли участие более <strong>7 000 человек</strong> из разных уголков России.',
+          stats: [
+            { v: '95%', l: 'испытывают позитивные эмоции от праздника' },
+            { v: '84%', l: 'оценили значимость праздника на «4» или «5»' },
+            { v: '83%', l: 'регулярно участвуют в праздничных мероприятиях' },
+            { v: '74%', l: 'предпочитают формат концертов' },
+          ],
+          extra: '74% хотели бы иметь в этот день официальный выходной. Чем старше человек, тем сильнее его связь с традициями — но и среди молодёжи ярко выражены патриотические настроения.'
+        },
+        {
+          heading: 'День воссоединения Донбасса и Новороссии с Россией',
+          text: 'Более <strong>17 000 человек</strong> из различных регионов страны приняли участие в опросе.',
+          stats: [
+            { v: '92%', l: 'знают о памятной дате' },
+            { v: '84%', l: 'положительно оценивают историческое событие' },
+            { v: '24%', l: 'главная причина значимости — укрепление суверенитета' },
+            { v: '40%', l: 'планируют посетить воссоединённые регионы' },
+          ],
+          extra: 'Каждый десятый участник опроса уже побывал на воссоединённых территориях, участвуя в волонтёрских миссиях и доставляя гуманитарную помощь.'
+        },
+        {
+          heading: 'День народного единства',
+          text: 'В опросе приняли участие более <strong>18 000 человек</strong>: 56% — молодёжь (18–35 лет), 42% — старше 35 лет.',
+          stats: [
+            { v: '89%', l: 'чувствуют себя частью единой страны' },
+            { v: '73%', l: 'знают об исторических событиях 1612 года' },
+            { v: '41%', l: 'главный смысл — многонациональность и единство' },
+            { v: '2%', l: 'воспринимают праздник только как выходной' },
+          ],
+          extra: 'День народного единства — значимый праздник, сочетающий символизм и гражданскую идентичность. Молодёжь выступает его главным носителем.'
+        },
+        {
+          heading: '#КрымНавсегда — День воссоединения Крыма с Россией',
+          text: 'К 12-й годовщине команда АНО «Приоритет» провела социологическое исследование. В опросе приняли участие более <strong>17 000 жителей</strong> из разных регионов.',
+          stats: [
+            { v: '92%', l: 'россиян положительно относятся к воссоединению' },
+            { v: '95%', l: 'считают это важным событием в истории страны' },
+            { v: '94%', l: 'считают, что дата должна оставаться значимой' },
+            { v: '74%', l: 'испытывают чувство гордости' },
+          ],
+          extra: 'Воссоединение Крыма и Севастополя с Россией воспринимается как важное и легитимное событие. Значимость даты со временем только укрепляется.'
+        }
+      ]
+    }
+  ];
+
+  // Modal logic
+  (function () {
+    const overlay = document.getElementById('modalOverlay');
+    const titleEl = document.getElementById('modalTitle');
+    const track = document.getElementById('slidesTrack');
+    const counterEl = document.getElementById('modalCounter');
+    const btnPrev = document.getElementById('modalPrev');
+    const btnNext = document.getElementById('modalNext');
+    const btnClose = document.getElementById('modalClose');
+    let currentSlide = 0;
+    let totalSlides = 0;
+
+    function buildSlide(s) {
+      const el = document.createElement('div');
+      el.className = 'slide';
+      let statsHtml = '';
+      if (s.stats) {
+        statsHtml = '<div class="stat-row">' + s.stats.map(st =>
+          `<div class="slide-stat"><div class="sv">${st.v}</div><div class="sl">${st.l}</div></div>`
+        ).join('') + '</div>';
+      }
+      let listHtml = '';
+      if (s.list) {
+        listHtml = '<ul>' + s.list.map(li => `<li>${li}</li>`).join('') + '</ul>';
+      }
+      el.innerHTML = `
+        <div class="slide-photos">
+          <div class="slide-photo">Фото<br/>скоро</div>
+          <div class="slide-photo">Фото<br/>скоро</div>
+        </div>
+        <div class="slide-text">
+          <h3>${s.heading}</h3>
+          <p>${s.text}</p>
+          ${listHtml}
+          ${statsHtml}
+          ${s.extra ? `<p style="margin-top:12px;color:var(--muted)">${s.extra}</p>` : ''}
+        </div>`;
+      return el;
+    }
+
+    function goTo(idx) {
+      currentSlide = idx;
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      counterEl.textContent = `${idx + 1} / ${totalSlides}`;
+      btnPrev.disabled = idx === 0;
+      btnNext.disabled = idx === totalSlides - 1;
+    }
+
+    function openModal(idx) {
+      const r = research[idx];
+      titleEl.textContent = r.title;
+      track.innerHTML = '';
+      totalSlides = r.slides.length;
+      r.slides.forEach(s => track.appendChild(buildSlide(s)));
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      goTo(0);
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.a-item[data-research]').forEach(btn => {
+      btn.addEventListener('click', () => openModal(+btn.dataset.research));
+    });
+    btnClose.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    btnPrev.addEventListener('click', () => goTo(currentSlide - 1));
+    btnNext.addEventListener('click', () => goTo(currentSlide + 1));
+  })();
+
   // Burger menu
   (function () {
     const burger = document.getElementById('burger');
