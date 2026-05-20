@@ -486,14 +486,32 @@
     aspect-ratio: 3/4;
     background: var(--bg-tint);
     border: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    color: var(--muted-2);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     flex-shrink: 0;
+    cursor: zoom-in;
+    transition: opacity 0.15s;
+  }
+  .slide-photo:hover { opacity: 0.88; }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 400;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
   }
   .slide-text {
     flex: 1;
@@ -653,41 +671,32 @@
 
   .partners {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 10px;
   }
   .partner {
     border: 1px solid var(--line);
-    padding: 22px 20px;
-    height: 110px;
+    padding: 18px 12px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 14px;
+    justify-content: center;
+    gap: 12px;
+    min-height: 110px;
     transition: border-color 0.15s;
   }
   .partner:hover { border-color: var(--accent); }
-  .partner .em {
-    width: 46px;
-    height: 46px;
-    color: var(--muted);
-    flex-shrink: 0;
+  .partner-logo {
+    width: 80px;
+    height: 50px;
+    object-fit: contain;
   }
   .partner .pn {
-    font-size: 11px;
+    font-size: 10px;
     color: var(--muted);
-    line-height: 1.45;
+    line-height: 1.4;
+    text-align: center;
   }
-  .partner .pn b { font-weight: 600; color: var(--ink-2); display: block; margin-bottom: 3px; font-size: 11.5px; }
-  .partners-more {
-    margin-top: 22px;
-    font-size: 12px;
-    color: var(--accent);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.15s;
-  }
-  .partners-more:hover { color: var(--accent-soft); }
 
   /* ============ NEWS (09) ============ */
   .news-wrap { position: relative; }
@@ -980,9 +989,9 @@
     .team { grid-template-columns: repeat(2, 1fr); gap: 16px; }
 
     /* Partners */
-    .partners { grid-template-columns: repeat(2, 1fr); }
-    .partner { height: auto; padding: 16px 14px; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .partner .em { width: 36px; height: 36px; }
+    .partners { grid-template-columns: repeat(3, 1fr); }
+    .partner { padding: 14px 10px; min-height: auto; }
+    .partner-logo { width: 60px; height: 38px; }
 
     /* News */
     .news { grid-template-columns: 1fr; }
@@ -1297,83 +1306,37 @@
   </div>
 </section>
 
-<!-- ============ 07 / 08 TEAM + PARTNERS ============ -->
-<section class="block">
+<!-- ============ 08 PARTNERS ============ -->
+<section class="block" id="partners">
   <div class="wrap">
-    <div class="row-2">
-      <!-- 07 -->
-      <div>
-        <div class="sec-head">
-          <span class="sec-num">07</span>
-          <h2 class="sec-title">Руководство и команда</h2>
-          <a href="#" class="sec-link">Вся команда →</a>
-        </div>
-        <div class="team">
-          <div class="person">
-            <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80')"></div>
-            <div class="nm">Иванов А. В.</div><div class="role">Директор</div>
-          </div>
-          <div class="person">
-            <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80')"></div>
-            <div class="nm">Петрова О. С.</div><div class="role">Заместитель директора</div>
-          </div>
-          <div class="person">
-            <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80')"></div>
-            <div class="nm">Смирнов Д. Е.</div><div class="role">Руководитель направления</div>
-          </div>
-          <div class="person">
-            <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80')"></div>
-            <div class="nm">Кузнецова М. А.</div><div class="role">Руководитель проектов</div>
-          </div>
-        </div>
-        <a href="#" class="team-more">Подробнее о команде →</a>
+    <div class="sec-head">
+      <span class="sec-num">07</span>
+      <h2 class="sec-title">Партнёры</h2>
+    </div>
+    <div class="partners">
+      <div class="partner">
+        <img class="partner-logo" src="лого/Комитет семей и воинов Отечества.png" alt="Комитет семей и воинов Отечества"/>
+        <div class="pn">Комитет семей и воинов Отечества</div>
       </div>
-
-      <!-- 08 -->
-      <div id="partners">
-        <div class="sec-head">
-          <span class="sec-num">08</span>
-          <h2 class="sec-title">Партнёры</h2>
-        </div>
-        <div class="partners">
-          <div class="partner">
-            <svg class="em" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.2">
-              <rect x="8" y="14" width="30" height="24"/><path d="M8 22h30"/><path d="M14 14V10h18v4"/><circle cx="23" cy="28" r="3"/>
-            </svg>
-            <div class="pn"><b>Счётная палата</b>Российской Федерации</div>
-          </div>
-          <div class="partner">
-            <svg class="em" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M23 8 8 16v6c0 9 7 14 15 17 8-3 15-8 15-17v-6L23 8z"/><path d="M16 24l5 5 9-10"/>
-            </svg>
-            <div class="pn"><b>РАНХиГС</b>Российская академия народного хозяйства и госслужбы</div>
-          </div>
-          <div class="partner">
-            <svg class="em" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.2">
-              <rect x="6" y="14" width="34" height="20"/><path d="M14 14v20M32 14v20M6 22h34"/>
-            </svg>
-            <div class="pn"><b>ВЭБ.РФ</b>Государственная корпорация развития</div>
-          </div>
-          <div class="partner">
-            <svg class="em" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M8 30 38 14"/><path d="M30 14h8v8"/><path d="M8 38h30"/>
-            </svg>
-            <div class="pn"><b>Агентство стратегических инициатив</b></div>
-          </div>
-          <div class="partner">
-            <svg class="em" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.2">
-              <rect x="8" y="10" width="30" height="28"/><path d="M14 10v28M32 10v28"/><path d="M8 18h30M8 30h30"/>
-            </svg>
-            <div class="pn"><b>Деловая Россия</b>Общероссийская общественная организация</div>
-          </div>
-          <div class="partner">
-            <svg class="em" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.2">
-              <circle cx="23" cy="23" r="14"/><path d="M9 23h28M23 9c5 4 5 24 0 28M23 9c-5 4-5 24 0 28"/>
-            </svg>
-            <div class="pn"><b>Опора России</b>Общероссийская общественная организация</div>
-          </div>
-        </div>
-        <a href="#" class="partners-more">Все партнёры →</a>
+      <div class="partner">
+        <img class="partner-logo" src="лого/ростелеком.png" alt="Ростелеком"/>
+        <div class="pn">Ростелеком</div>
+      </div>
+      <div class="partner">
+        <img class="partner-logo" src="лого/гранты мэра москвы.png" alt="Гранты Мэра Москвы"/>
+        <div class="pn">Гранты Мэра Москвы</div>
+      </div>
+      <div class="partner">
+        <img class="partner-logo" src="лого/Россельхозбанк.png" alt="Россельхозбанк"/>
+        <div class="pn">Россельхозбанк</div>
+      </div>
+      <div class="partner">
+        <img class="partner-logo" src="лого/Проектный офис развития Арктики.jpg" alt="Проектный офис развития Арктики"/>
+        <div class="pn">Проектный офис развития Арктики</div>
+      </div>
+      <div class="partner">
+        <img class="partner-logo" src="лого/Комитет общественных связей и молодежной политики города Москвы.png" alt="Комитет общественных связей и молодежной политики города Москвы"/>
+        <div class="pn">Комитет общественных связей и молодежной политики города Москвы</div>
       </div>
     </div>
   </div>
@@ -1454,6 +1417,11 @@
     <div class="copyright">© АНО «Приоритет», 2013—2024</div>
   </div>
 </footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" src="" alt=""/>
+</div>
 
 <!-- ============ MODAL ============ -->
 <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
@@ -1634,7 +1602,7 @@
         listHtml = '<ul>' + s.list.map(li => `<li>${li}</li>`).join('') + '</ul>';
       }
       const photosHtml = (s.photos || []).map(p =>
-        `<div class="slide-photo" style="background-image:url('${encodeURI(p)}')"></div>`
+        `<div class="slide-photo" data-src="${encodeURI(p)}" style="background-image:url('${encodeURI(p)}')"></div>`
       ).join('');
       el.innerHTML = `
         <div class="slide-photos">${photosHtml}</div>
@@ -1672,6 +1640,12 @@
       document.body.style.overflow = '';
     }
 
+    // Open photo on click inside modal
+    track.addEventListener('click', e => {
+      const photo = e.target.closest('.slide-photo');
+      if (photo && photo.dataset.src) openLightbox(decodeURI(photo.dataset.src));
+    });
+
     document.querySelectorAll('.a-item[data-research]').forEach(btn => {
       btn.addEventListener('click', () => openModal(+btn.dataset.research));
     });
@@ -1681,6 +1655,20 @@
     btnPrev.addEventListener('click', () => goTo(currentSlide - 1));
     btnNext.addEventListener('click', () => goTo(currentSlide + 1));
   })();
+
+  // Lightbox
+  function openLightbox(src) {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightboxImg').src = src;
+    lb.classList.add('open');
+  }
+  document.getElementById('lightbox').addEventListener('click', function() {
+    this.classList.remove('open');
+    document.getElementById('lightboxImg').src = '';
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+  });
 
   // Burger menu
   (function () {
