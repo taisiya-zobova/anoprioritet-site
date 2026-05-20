@@ -82,7 +82,7 @@
     overflow: hidden;
     background:
       linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.78) 38%, rgba(255,255,255,0.25) 60%, rgba(255,255,255,0.0) 80%),
-      url("фото/hero.jpg") center/cover no-repeat;
+      url("фото/hero.png") center/cover no-repeat;
   }
   .hero .wrap { position: relative; height: 100%; padding-top: 64px; }
   .hero .accent-bar {
@@ -801,7 +801,7 @@
   }
   .foot-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.7fr 0.7fr 0.7fr 0.9fr;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr;
     gap: 36px;
     align-items: start;
   }
@@ -853,23 +853,22 @@
     transition: color 0.15s;
   }
   .foot-col li:hover { color: var(--accent); }
-  .socials {
-    display: flex; gap: 10px;
-    margin-top: 12px;
+  .foot-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
   }
-  .soc {
-    width: 30px; height: 30px;
-    border: 1px solid var(--line);
-    color: var(--muted);
-    display: flex; align-items: center; justify-content: center;
-    transition: color 0.15s, border-color 0.15s;
+  .foot-soc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--ink-2);
+    transition: color 0.15s;
   }
-  .soc:hover { color: var(--accent); border-color: var(--accent); }
-  .soc-h {
-    font-size: 11px;
-    color: var(--muted);
-    margin: 0 0 12px;
-  }
+  .foot-soc-link:hover { color: var(--accent); }
+  .foot-soc-link svg { flex-shrink: 0; color: var(--accent); }
   .copyright {
     margin-top: 48px;
     padding-top: 18px;
@@ -1001,9 +1000,7 @@
     .arrow { display: none; }
 
     /* Footer */
-    .foot-grid { grid-template-columns: repeat(3, 1fr); gap: 20px 16px; }
-    .foot-info { grid-column: 1 / -1; }
-    .foot-grid > div:last-child { grid-column: 1 / -1; }
+    .foot-grid { grid-template-columns: 1fr; gap: 24px; }
     .foot-col-h { visibility: hidden; margin: 0 0 8px; }
   }
 
@@ -1094,7 +1091,7 @@
         <p>АНО «Приоритет» создана для поддержки проектов и инициатив, открывающих возможности для участия граждан в общественной деятельности. За два года работы мы реализовали десятки проектов в сфере гражданского общества, патриотического воспитания, социологических исследований и кадрового развития.</p>
       </div>
       <div class="about-right director-card">
-        <div class="director-photo" style="background-image:url('фото/директор.jpg')"></div>
+        <div class="director-photo" style="background-image:url('фото/директор.png')"></div>
         <div class="director-info">
           <div class="director-name">Петров Артём Андреевич</div>
           <div class="director-role">Директор</div>
@@ -1181,7 +1178,7 @@
           <div class="projects-viewport">
             <div class="projects-track" id="projTrack">
               <div class="project">
-                <div class="img" style="background-image:url('фото/бан - фейков нет.jpg')"></div>
+                <div class="img" style="background-image:url('фото/бан-фейков нет.jpg')"></div>
                 <h4>«БАН» — фейков нет</h4>
                 <p>Победитель Гранта Мэра Москвы 2024 года. Образовательные лекции по цифровой грамотности для жителей Москвы и бот для проверки фейковой информации <a href="http://t.me/BAN_fakes_bot" style="color:var(--accent)">@BAN_fakes_bot</a>.</p>
               </div>
@@ -1361,75 +1358,52 @@
 <footer id="contacts">
   <div class="wrap">
     <div class="sec-head" style="margin-bottom:28px;">
-      <span class="sec-num">10</span>
+      <span class="sec-num">08</span>
       <h2 class="sec-title">Контакты</h2>
     </div>
 
     <div class="foot-grid">
       <div class="foot-info">
-        <p>109012, г. Москва,<br/>ул. Ильинка, д. 23</p>
         <p>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4c0-1 .8-2 2-2h1l1.5 3-1.5 1c.5 2 2 3.5 4 4l1-1.5L14 10v1c0 1.2-.8 2-2 2-5 0-9-4-9-9z"/></svg>
-          +7 (495) 123-45-67
+          +7 (925) 295-52-45
         </p>
-        <p>
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10"/><path d="m2 4 6 5 6-5"/></svg>
-          info@prioritet.center
-        </p>
-        <a href="#" class="foot-callback">Обратная связь →</a>
-      </div>
-
-      <div class="foot-col">
-        <div class="foot-col-h">.</div>
-        <ul>
-          <li>О нас</li>
-          <li>Документы</li>
-          <li>Команда</li>
-          <li>Вакансии</li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <div class="foot-col-h">.</div>
-        <ul>
-          <li>Направления</li>
-          <li>Проекты</li>
-          <li>Аналитика</li>
-          <li>Публикации</li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <div class="foot-col-h">.</div>
-        <ul>
-          <li>Партнёры</li>
-          <li>Мероприятия</li>
-          <li>Новости</li>
-          <li>Контакты</li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="soc-h">Мы в соцсетях</p>
-        <div class="socials">
-          <a class="soc" href="#" aria-label="Telegram">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M14.5 2.3 1.8 7.2c-.9.4-.9.9-.2 1.1l3.3 1 1.2 3.7c.2.4.4.6.7.6.3 0 .5-.1.7-.4l1.7-1.6 3.4 2.5c.6.4 1.1.2 1.3-.6l2.3-10.9c.2-.9-.4-1.4-1.7-.3z"/>
-            </svg>
+        <div class="foot-socials">
+          <a href="https://vk.com/ano_prioritet" class="foot-soc-link" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8.4 12c-3.6 0-5.7-2.5-5.8-6.6h1.8c.1 3 1.4 4.3 2.5 4.6V5.4h1.7v2.6c1-.1 2.1-1.3 2.5-2.6h1.7c-.3 1.6-1.5 2.8-2.3 3.3 1 .4 2.3 1.5 2.8 3.3h-1.9c-.4-1.4-1.4-2.4-2.7-2.6V12h-.3z"/></svg>
+            ВКонтакте
           </a>
-          <a class="soc" href="#" aria-label="VK">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8.4 12c-3.6 0-5.7-2.5-5.8-6.6h1.8c.1 3 1.4 4.3 2.5 4.6V5.4h1.7v2.6c1-.1 2.1-1.3 2.5-2.6h1.7c-.3 1.6-1.5 2.8-2.3 3.3 1 .4 2.3 1.5 2.8 3.3h-1.9c-.4-1.4-1.4-2.4-2.7-2.6V12h-.3z"/>
-            </svg>
+          <a href="https://t.me/ano_prioritet" class="foot-soc-link" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M14.5 2.3 1.8 7.2c-.9.4-.9.9-.2 1.1l3.3 1 1.2 3.7c.2.4.4.6.7.6.3 0 .5-.1.7-.4l1.7-1.6 3.4 2.5c.6.4 1.1.2 1.3-.6l2.3-10.9c.2-.9-.4-1.4-1.7-.3z"/></svg>
+            Telegram
           </a>
-          <a class="soc" href="#" aria-label="Дзен">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M8 2v5l5-1c-.3 2.5-2.4 4.6-5 5l1 4-5-1c.3-2.5 2.4-4.6 5-5L8 2z"/>
-            </svg>
+          <a href="https://max.ru/ano_prioritet" class="foot-soc-link" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg>
+            MAX
           </a>
         </div>
       </div>
+
+      <div class="foot-col">
+        <div class="foot-col-h">.</div>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#dirs">Направления</a></li>
+          <li><a href="#projects">Проекты</a></li>
+          <li><a href="#analytics">Аналитика</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-h">.</div>
+        <ul>
+          <li><a href="#caps">Возможности</a></li>
+          <li><a href="#partners">Партнёры</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="copyright">© АНО «Приоритет», 2013—2024</div>
+    <div class="copyright">© АНО «Приоритет», 2023—2026</div>
   </div>
 </footer>
 
