@@ -103,7 +103,7 @@
     overflow: hidden;
     background:
       linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.78) 38%, rgba(255,255,255,0.25) 60%, rgba(255,255,255,0.0) 80%),
-      url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80") center/cover no-repeat;
+      url("фото/hero.jpg") center/cover no-repeat;
   }
   .hero .wrap { position: relative; height: 100%; padding-top: 64px; }
   .hero .accent-bar {
@@ -341,16 +341,23 @@
     grid-template-columns: 1fr 1fr;
     gap: 56px;
   }
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  .projects-carousel { position: relative; }
+  .projects-viewport { overflow: hidden; }
+  .projects-track {
+    display: flex;
     gap: 14px;
+    transition: transform 0.35s ease;
+  }
+  .project {
+    flex: 0 0 calc((100% - 28px) / 3);
+    min-width: 0;
   }
   .project .img {
     width: 100%;
     aspect-ratio: 1 / 1;
     background-size: cover;
     background-position: center;
+    background-color: var(--bg-tint);
     margin-bottom: 14px;
     transition: opacity 0.2s;
   }
@@ -369,6 +376,23 @@
     line-height: 1.55;
     margin: 0;
   }
+  .projects-nav {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .proj-btn {
+    width: 28px; height: 28px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .proj-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .proj-btn:disabled { opacity: 0.3; cursor: default; }
 
   .analytics-list { display: flex; flex-direction: column; }
   .a-item {
@@ -973,7 +997,6 @@
 
     /* Projects + Analytics */
     .row-2 { grid-template-columns: 1fr; gap: 36px; }
-    .projects-grid { grid-template-columns: 1fr; gap: 24px; }
     .project .img { aspect-ratio: 16/9; }
 
     /* Capabilities */
@@ -1101,7 +1124,7 @@
         <p>АНО «Приоритет» создана для поддержки проектов и инициатив, открывающих возможности для участия граждан в общественной деятельности. За два года работы мы реализовали десятки проектов в сфере гражданского общества, патриотического воспитания, социологических исследований и кадрового развития.</p>
       </div>
       <div class="about-right director-card">
-        <div class="director-photo" style="background-image:url('director.jpg')"></div>
+        <div class="director-photo" style="background-image:url('фото/директор.jpg')"></div>
         <div class="director-info">
           <div class="director-name">Петров Артём Андреевич</div>
           <div class="director-role">Директор</div>
@@ -1183,24 +1206,46 @@
         <div class="sec-head">
           <span class="sec-num">03</span>
           <h2 class="sec-title">Проекты и инициативы</h2>
-          <a href="#" class="sec-link">Все проекты →</a>
         </div>
-        <div class="projects-grid">
-          <a class="project" href="#">
-            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1545569310-b063125e10b3?auto=format&fit=crop&w=600&q=80')"></div>
-            <h4>Инструменты развития регионов</h4>
-            <p>Разработка методики оценки эффективности мер поддержки социально-экономического развития субъектов РФ.</p>
-          </a>
-          <a class="project" href="#">
-            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=600&q=80')"></div>
-            <h4>Справедливое регулирование</h4>
-            <p>Подготовка предложений по улучшению качества регуляторной среды и снижению административных барьеров.</p>
-          </a>
-          <a class="project" href="#">
-            <div class="img" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80')"></div>
-            <h4>Человеческий капитал будущего</h4>
-            <p>Исследование компетенций будущего и моделей подготовки кадров для новой экономики.</p>
-          </a>
+        <div class="projects-carousel">
+          <div class="projects-viewport">
+            <div class="projects-track" id="projTrack">
+              <div class="project">
+                <div class="img" style="background-image:url('фото/бан - фейков нет.jpg')"></div>
+                <h4>«БАН» — фейков нет</h4>
+                <p>Победитель Гранта Мэра Москвы 2024 года. Образовательные лекции по цифровой грамотности для жителей Москвы и бот для проверки фейковой информации <a href="http://t.me/BAN_fakes_bot" style="color:var(--accent)">@BAN_fakes_bot</a>.</p>
+              </div>
+              <div class="project">
+                <div class="img" style="background-image:url('фото/своими глазами.jpg')"></div>
+                <h4>«Своими глазами»</h4>
+                <p>Победитель Гранта Мэра Москвы 2025 года. Онлайн-архив историй мирных жителей новых регионов, переехавших в Москву, и серия тематических выставок о жизни в новой России.</p>
+              </div>
+              <div class="project">
+                <div class="img" style="background-image:url('фото/ксво.jpg')"></div>
+                <h4>Форумы Комитета семей воинов Отечества</h4>
+                <p>19 окружных форумов для региональных отделений КСВО — площадка для диалога, поддержки и координации семей военнослужащих по всей стране.</p>
+              </div>
+              <div class="project">
+                <div class="img" style="background-image:url('фото/кадры.jpg')"></div>
+                <h4>Кадровый проект</h4>
+                <p>Более 1 000 человек со всей страны прошли обучение и повышение квалификации в рамках нацпроекта «Кадры». Свыше 300 из них трудоустроены.</p>
+              </div>
+              <div class="project">
+                <div class="img" style="background-image:url('фото/гумка.jpg')"></div>
+                <h4>Гуманитарная помощь</h4>
+                <p>Регулярный сбор и доставка помощи на передовую: артиллеристам группировки войск «Днепр», подразделению ПВО на Запорожском направлении, пограничникам Белгородской области.</p>
+              </div>
+              <div class="project">
+                <div class="img" style="background-image:url('фото/медиарост.jpg')"></div>
+                <h4>МедиаРост</h4>
+                <p>«МедиаРост» — специальный проект для настоящих и будущих лидеров общественного мнения.</p>
+              </div>
+            </div>
+          </div>
+          <div class="projects-nav">
+            <button class="proj-btn" id="projPrev" aria-label="Назад">&#8249;</button>
+            <button class="proj-btn" id="projNext" aria-label="Вперёд">&#8250;</button>
+          </div>
         </div>
       </div>
 
@@ -1654,6 +1699,34 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
     btnPrev.addEventListener('click', () => goTo(currentSlide - 1));
     btnNext.addEventListener('click', () => goTo(currentSlide + 1));
+  })();
+
+  // Projects carousel
+  (function () {
+    const track = document.getElementById('projTrack');
+    const btnPrev = document.getElementById('projPrev');
+    const btnNext = document.getElementById('projNext');
+    if (!track) return;
+    const cards = track.children.length;
+    const visible = () => window.innerWidth <= 768 ? 1 : 3;
+    let idx = 0;
+
+    function update() {
+      const vis = visible();
+      const gap = 14;
+      const cardW = (track.parentElement.offsetWidth - gap * (vis - 1)) / vis;
+      const step = cardW + gap;
+      const max = cards - vis;
+      if (idx > max) idx = max;
+      track.style.transform = `translateX(-${idx * step}px)`;
+      btnPrev.disabled = idx === 0;
+      btnNext.disabled = idx >= max;
+    }
+
+    btnPrev.addEventListener('click', () => { idx--; update(); });
+    btnNext.addEventListener('click', () => { idx++; update(); });
+    window.addEventListener('resize', update);
+    update();
   })();
 
   // Lightbox
