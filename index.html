@@ -966,7 +966,7 @@
 
     /* Projects + Analytics */
     .row-2 { grid-template-columns: 1fr; gap: 36px; }
-    .project .img { aspect-ratio: 16/9; }
+    .project .img { aspect-ratio: 1/1; }
 
     /* Capabilities */
     .caps { grid-template-columns: 1fr; gap: 0; }
@@ -1012,8 +1012,8 @@
     .cap-text { font-size: 14.5px; }
     .project p { font-size: 13.5px; }
     .pillar-text { font-size: 14px; }
-    .a-item { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; }
-    .a-title { font-size: 15px; }
+    .a-item { align-items: flex-start; }
+    .a-title { font-size: 15px; word-break: break-word; overflow-wrap: break-word; }
 
     /* Partners 2×3 */
     .partners { grid-template-columns: repeat(2, 1fr); }
