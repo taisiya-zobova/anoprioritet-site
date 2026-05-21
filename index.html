@@ -928,8 +928,8 @@
       height: auto;
       min-height: 420px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.97) 60%, rgba(255,255,255,0.7) 100%),
-        url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+        linear-gradient(180deg, rgba(255,255,255,0.97) 55%, rgba(255,255,255,0.6) 100%),
+        url("фото/hero.png") center/cover no-repeat;
     }
     .hero .wrap { padding-top: 36px; padding-bottom: 36px; }
     .hero h1 { font-size: 26px; max-width: 100%; }
@@ -983,8 +983,10 @@
     .arrow { display: none; }
 
     /* Footer */
-    .foot-grid { grid-template-columns: 1fr; gap: 24px; }
-    .foot-col-h { visibility: hidden; margin: 0 0 8px; }
+    .foot-top { flex-direction: column; gap: 32px; }
+    .foot-nav-cols { flex-direction: row; gap: 24px; }
+    .director-card { padding: 20px 16px; gap: 16px; }
+    .director-photo { width: 90px; height: 108px; }
   }
 
   @media (max-width: 480px) {
@@ -1708,26 +1710,6 @@
     sections.forEach(s => observer.observe(s));
   })();
 
-  // News carousel
-  (function () {
-    const track = document.getElementById('newsTrack');
-    const dots = document.querySelectorAll('.news-dot');
-    const btnL = document.getElementById('newsLeft');
-    const btnR = document.getElementById('newsRight');
-    let current = 0;
-    const total = dots.length;
-
-    function go(idx) {
-      current = (idx + total) % total;
-      // Shift by ~50% of track width on page 2
-      track.style.transform = current === 0 ? '' : 'translateX(calc(-50% - 7px))';
-      dots.forEach((d, i) => d.classList.toggle('active', i === current));
-    }
-
-    btnL.addEventListener('click', () => go(current - 1));
-    btnR.addEventListener('click', () => go(current + 1));
-    dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.index)));
-  })();
 </script>
 
 </body>
