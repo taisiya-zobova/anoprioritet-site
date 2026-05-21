@@ -328,7 +328,6 @@
     gap: 14px;
     transition: transform 0.35s ease;
   }
-  .projects-track.dragging { transition: none; }
   .project {
     flex: 0 0 calc((100% - 28px) / 3);
     min-width: 0;
@@ -1005,7 +1004,7 @@
     .dir.active .dir-desc { max-height: 220px; opacity: 1; }
 
     /* Projects — swipe only, no buttons */
-    .projects-nav { display: none; }
+    .projects-nav { display: flex; }
 
     /* Body text +2px */
     .about-left p { font-size: 15px; }
@@ -1686,9 +1685,6 @@
       btnPrev.disabled = idx === 0;
       btnNext.disabled = idx >= max;
     }
-    window._projGoTo = goTo;
-    window._projGetIdx = () => idx;
-
     btnPrev.addEventListener('click', () => goTo(idx - 1));
     btnNext.addEventListener('click', () => goTo(idx + 1));
     window.addEventListener('resize', () => goTo(idx));
@@ -1741,68 +1737,6 @@
         dir.classList.toggle('active');
       });
     });
-  })();
-
-  // Projects — touch drag
-  (function () {
-    const viewport = document.querySelector('.projects-viewport');
-    const track = document.getElementById('projTrack');
-    if (!viewport || !track) return;
-    let startX = 0, startTranslate = 0, savedStep = 1, savedMax = 0, dragging = false;
-
-    function getTranslate() {
-      const m = (track.style.transform || '').match(/-?[\d.]+/);
-      return m ? parseFloat(m[0]) : 0;
-    }
-    function calcStep() {
-      const vis = window.innerWidth <= 768 ? 1 : 3;
-      const gap = 14;
-      const cardW = (track.parentElement.offsetWidth - gap * (vis - 1)) / vis;
-      return { step: cardW + gap, max: track.children.length - vis };
-    }
-    function snap() {
-      track.classList.remove('dragging');
-      if (window._projGoTo && window._projGetIdx) {
-        window._projGoTo(window._projGetIdx());
-      }
-    }
-
-    viewport.addEventListener('touchstart', e => {
-      const s = calcStep();
-      savedStep = s.step;
-      savedMax = s.max;
-      startX = e.touches[0].clientX;
-      startTranslate = getTranslate();
-      dragging = true;
-      track.classList.add('dragging');
-    }, { passive: true });
-
-    viewport.addEventListener('touchmove', e => {
-      if (!dragging) return;
-      const minT = -(savedMax * savedStep);
-      let t = startTranslate + (e.touches[0].clientX - startX);
-      if (t > 0) t *= 0.2;
-      if (t < minT) t = minT + (t - minT) * 0.2;
-      track.style.transform = `translateX(${t}px)`;
-    }, { passive: true });
-
-    viewport.addEventListener('touchend', e => {
-      if (!dragging) return;
-      dragging = false;
-      track.classList.remove('dragging');
-      const dx = e.changedTouches[0].clientX - startX;
-      if (!window._projGoTo || !window._projGetIdx) return;
-      const curIdx = window._projGetIdx();
-      if (Math.abs(dx) < 30) { window._projGoTo(curIdx); return; }
-      const targetIdx = Math.round((-startTranslate - dx) / savedStep);
-      window._projGoTo(targetIdx);
-    }, { passive: true });
-
-    viewport.addEventListener('touchcancel', () => {
-      if (!dragging) return;
-      dragging = false;
-      snap();
-    }, { passive: true });
   })();
 
   // Active nav on scroll
