@@ -25,7 +25,7 @@
     --sans: "Roboto", "Helvetica Neue", Arial, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   html, body { margin: 0; padding: 0; overflow-x: hidden; }
   body {
     font-family: var(--sans);
@@ -1011,7 +1011,7 @@
     .cap-text { font-size: 14.5px; }
     .project p { font-size: 13.5px; }
     .pillar-text { font-size: 14px; }
-    .a-title { font-size: 14.5px; }
+    .a-title { font-size: 13px; }
 
     /* Partners 2×3 */
     .partners { grid-template-columns: repeat(2, 1fr); }
