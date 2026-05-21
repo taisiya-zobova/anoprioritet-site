@@ -25,7 +25,7 @@
     --sans: "Roboto", "Helvetica Neue", Arial, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
   html, body { margin: 0; padding: 0; }
   body {
     font-family: var(--sans);
@@ -389,6 +389,7 @@
     width: 100%;
     text-align: left;
     cursor: pointer;
+    font-family: var(--sans);
   }
   .a-item:first-child { padding-top: 4px; }
   .a-item:last-child { border-bottom: 0; }
@@ -984,9 +985,31 @@
 
     /* Footer */
     .foot-top { flex-direction: column; gap: 32px; }
-    .foot-nav-cols { flex-direction: row; gap: 24px; }
+    .foot-nav-cols { flex-direction: row; gap: 16px; justify-content: space-between; }
+    .foot-col:last-child { flex: 0 0 auto; min-width: 162px; }
+    .foot-col li { white-space: nowrap; }
     .director-card { padding: 20px 16px; gap: 16px; }
     .director-photo { width: 90px; height: 108px; }
+
+    /* Directions — click to expand */
+    .dir:hover .dir-desc { max-height: 0; opacity: 0; }
+    .dir.active .dir-desc { max-height: 220px; opacity: 1; }
+
+    /* Projects — swipe only, no buttons */
+    .projects-nav { display: none; }
+
+    /* Body text +2px */
+    .about-left p { font-size: 15px; }
+    .dir-name { font-size: 15px; }
+    .dir-desc { font-size: 14px; }
+    .cap-text { font-size: 14.5px; }
+    .project p { font-size: 13.5px; }
+    .pillar-text { font-size: 14px; }
+    .a-title { font-size: 14.5px; }
+
+    /* Partners 2×3 */
+    .partners { grid-template-columns: repeat(2, 1fr); }
+    .partner-logo { width: 80px; height: 50px; }
   }
 
   @media (max-width: 480px) {
@@ -998,8 +1021,8 @@
     .dir:last-child { border-bottom: none; }
     .numbers { grid-template-columns: repeat(2, 1fr); }
     .team { grid-template-columns: repeat(2, 1fr); }
-    .partners { grid-template-columns: 1fr; }
-    .partner { flex-direction: row; align-items: center; height: auto; }
+    .partners { grid-template-columns: repeat(2, 1fr); }
+    .partner { flex-direction: column; align-items: center; height: auto; }
   }
 </style>
 </head>
@@ -1691,6 +1714,32 @@
       menu.classList.remove('open');
       burger.classList.remove('open');
     }));
+  })();
+
+  // Direction cards — click to expand on mobile
+  (function () {
+    document.querySelectorAll('.dir').forEach(dir => {
+      dir.addEventListener('click', () => {
+        if (window.innerWidth > 768) return;
+        dir.classList.toggle('active');
+      });
+    });
+  })();
+
+  // Projects — touch swipe
+  (function () {
+    const viewport = document.querySelector('.projects-viewport');
+    if (!viewport) return;
+    let startX = 0;
+    viewport.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+    viewport.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) < 40) return;
+      if (dx < 0) document.getElementById('projNext').click();
+      else document.getElementById('projPrev').click();
+    }, { passive: true });
   })();
 
   // Active nav on scroll
