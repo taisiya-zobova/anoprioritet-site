@@ -1012,7 +1012,7 @@
     .cap-text { font-size: 14.5px; }
     .project p { font-size: 13.5px; }
     .pillar-text { font-size: 14px; }
-    .a-item { display: grid; grid-template-columns: auto 1fr auto; align-items: center; }
+    .a-item { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; }
     .a-title { font-size: 15px; }
 
     /* Partners 2×3 */
@@ -1781,13 +1781,10 @@
       track.style.transition = '';
       const { step } = getStep();
       const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) < 15) {
-        track.style.transform = `translateX(${startTranslate}px)`;
-        return;
-      }
-      const raw = -startTranslate / step;
-      const newIdx = Math.round(raw + (dx < 0 ? 0.4 : -0.4));
+      const currentTranslate = startTranslate + dx;
+      const newIdx = Math.round(-currentTranslate / step);
       if (window._projGoTo) window._projGoTo(newIdx);
+      else track.style.transform = `translateX(${startTranslate}px)`;
     }, { passive: true });
   })();
 
