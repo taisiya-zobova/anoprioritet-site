@@ -54,33 +54,18 @@
     display: flex;
     align-items: center;
     height: 78px;
-    gap: 0;
+    gap: 36px;
   }
   .brand {
     display: flex;
     align-items: center;
-    gap: 14px;
     flex-shrink: 0;
-    text-decoration: none;
   }
   .brand-logo {
     height: 48px;
     width: auto;
     display: block;
     object-fit: contain;
-  }
-  .brand-divider {
-    width: 1px;
-    height: 28px;
-    background: var(--line);
-    flex-shrink: 0;
-  }
-  .brand-sub {
-    font-family: var(--serif);
-    font-size: 13.5px;
-    color: var(--ink-2);
-    font-weight: 400;
-    white-space: nowrap;
   }
   nav.menu {
     display: flex;
@@ -90,23 +75,8 @@
     color: var(--ink-2);
   }
   nav.menu a { transition: color 0.15s; }
-  nav.menu a:hover { color: var(--accent); }
-  .nav-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 9px 20px;
-    background: var(--accent);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.15s;
-    flex-shrink: 0;
-    white-space: nowrap;
-    margin-left: 32px;
-  }
-  .nav-cta:hover { background: var(--accent-soft); }
+  nav.menu a:hover,
+  nav.menu a.active { color: var(--accent); }
 
   /* ===== HERO ===== */
   .hero {
@@ -162,10 +132,10 @@
     max-width: 580px;
     letter-spacing: -0.01em;
   }
-  .hero h1 .hl { color: var(--hero-hl); }
+  .hero h1 .hl { color: #fff; }
   .hero-sub {
     font-size: 14px;
-    color: rgba(255,255,255,0.68);
+    color: rgba(255,255,255,0.9);
     line-height: 1.7;
     max-width: 460px;
     margin: 0 0 38px;
@@ -182,8 +152,8 @@
     align-items: center;
     gap: 8px;
     padding: 14px 30px;
-    background: var(--hero-hl);
-    color: #1E3A6E;
+    background: #fff;
+    color: var(--accent);
     font-size: 14px;
     font-weight: 600;
     font-family: var(--sans);
@@ -271,7 +241,7 @@
     border-right: 1px solid var(--line);
     gap: 7px;
   }
-  .sb-item:last-child { border-right: none; }
+  .sb-item:first-child { border-left: 1px solid var(--line); }
   .sb-val {
     font-family: var(--serif);
     font-size: 32px;
@@ -384,7 +354,7 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    font-size: 13px;
+    font-size: 15px;
     color: var(--ink-2);
     line-height: 1.55;
   }
@@ -561,11 +531,60 @@
     .wrap { width: 100%; padding: 0 16px; }
 
     /* Header */
-    .nav { height: 64px; }
-    nav.menu { display: none; }
-    .brand-sub { display: none; }
-    .brand-divider { display: none; }
-    .nav-cta { margin-left: auto; padding: 8px 14px; font-size: 12.5px; }
+    .nav { height: 60px; gap: 0; }
+    nav.menu {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 260px;
+      height: calc(100vh - 60px);
+      background: #fff;
+      border-left: 1px solid var(--line);
+      padding: 20px 20px 28px;
+      gap: 0;
+      z-index: 99;
+      box-shadow: -8px 0 24px rgba(0,0,0,0.08);
+      margin-left: 0;
+    }
+    nav.menu.open { display: flex; }
+    nav.menu a {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line-2);
+      font-size: 15px;
+    }
+    nav.menu a:last-child { border-bottom: none; }
+    .burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+      cursor: pointer;
+      margin-left: auto;
+      width: 28px;
+      height: 28px;
+      position: relative;
+    }
+    .burger span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: transform 0.25s ease, opacity 0.2s ease;
+      transform-origin: center;
+      position: absolute;
+      left: 4px;
+    }
+    .burger span:nth-child(1) { top: 7px; }
+    .burger span:nth-child(2) { top: 13px; }
+    .burger span:nth-child(3) { top: 19px; }
+    .burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
     /* Hero */
     .hero { padding: 52px 0 46px; }
@@ -611,15 +630,15 @@
   <div class="wrap nav">
     <a class="brand" href="../">
       <img src="../материалы/лого/Приоритет.png" alt="АНО Приоритет" class="brand-logo"/>
-      <div class="brand-divider"></div>
-      <span class="brand-sub">Инфодиктант 2026</span>
     </a>
     <nav class="menu">
       <a href="#how">Как участвовать</a>
       <a href="#register">Регистрация</a>
       <a href="../">О нас</a>
     </nav>
-    <a href="#register" class="nav-cta">Участвовать →</a>
+    <button class="burger" id="burger" aria-label="Меню" style="display:none">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -692,7 +711,6 @@
     <div class="how-grid">
 
       <div class="how-card">
-        <div class="how-num">01</div>
         <svg class="how-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4">
           <circle cx="17" cy="11" r="6"/>
           <path d="M5 29c0-5 5.4-9 12-9s12 4 12 9"/>
@@ -702,7 +720,6 @@
       </div>
 
       <div class="how-card">
-        <div class="how-num">02</div>
         <svg class="how-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4">
           <rect x="5" y="4" width="24" height="26" rx="1"/>
           <path d="M10 11h14M10 17h14M10 23h8"/>
@@ -712,7 +729,6 @@
       </div>
 
       <div class="how-card">
-        <div class="how-num">03</div>
         <svg class="how-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4">
           <circle cx="17" cy="17" r="13"/>
           <path d="M11 17l4.5 4.5L23 12"/>
@@ -952,6 +968,32 @@
   }
   tick();
   setInterval(tick, 1000);
+
+  // Burger menu
+  (function () {
+    var burger = document.getElementById('burger');
+    var menu = document.querySelector('nav.menu');
+    function isMobile() { return window.innerWidth <= 768; }
+    function syncBurger() {
+      burger.style.display = isMobile() ? 'flex' : 'none';
+      if (!isMobile()) {
+        menu.classList.remove('open');
+        burger.classList.remove('open');
+      }
+    }
+    syncBurger();
+    window.addEventListener('resize', syncBurger);
+    burger.addEventListener('click', function() {
+      menu.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        menu.classList.remove('open');
+        burger.classList.remove('open');
+      });
+    });
+  })();
 
   // Form submission
   document.getElementById('regForm').addEventListener('submit', function(e) {
