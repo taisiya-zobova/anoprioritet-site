@@ -84,24 +84,28 @@
     overflow: hidden;
   }
   .hero-inner {
-    display: flex;
-    align-items: center;
-    gap: 56px;
+    display: grid;
+    grid-template-columns: 1fr 630px;
+    grid-template-areas: "top img" "bottom img";
+    column-gap: 56px;
+    row-gap: 28px;
     padding: 76px 0 68px;
+    max-width: 100%;
   }
-  .hero-content { flex: 1; min-width: 0; }
+  .hero-top { grid-area: top; }
+  .hero-bottom { grid-area: bottom; }
   .hero-img-wrap {
-    flex: 0 0 630px;
-    max-width: 58%;
-    align-self: stretch;
+    grid-area: img;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   .hero-img {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block;
     object-fit: contain;
+    max-height: 460px;
   }
   .hero-badge {
     display: inline-flex;
@@ -619,8 +623,18 @@
     .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
     /* Hero */
-    .hero-inner { flex-direction: column; padding: 48px 0 40px; gap: 32px; }
-    .hero-img-wrap { display: none; }
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 0 36px;
+      gap: 0;
+    }
+    .hero-top { margin-bottom: 20px; }
+    .hero-img-wrap {
+      display: flex;
+      margin: 0 -16px 20px;
+    }
+    .hero-img { max-height: 240px; object-fit: cover; }
     .hero h1 { font-size: 30px; max-width: 100%; }
     .hero-sub { font-size: 13px; max-width: 100%; }
     .hero-actions { gap: 10px; }
@@ -631,8 +645,17 @@
     .cd-sep { font-size: 24px; margin-bottom: 10px; }
 
     /* Stats */
-    .stats-inner { flex-direction: column; }
-    .sb-item { border-right: none; border-bottom: 1px solid var(--line); padding: 20px 16px; flex-direction: row; gap: 12px; align-items: center; }
+    .stats-inner { flex-direction: column; margin: 0 -16px; }
+    .sb-item {
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      padding: 18px 16px;
+      flex-direction: row;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    .sb-item:first-child { border-left: none; }
     .sb-item:last-child { border-bottom: none; }
 
     /* Sections */
@@ -684,42 +707,44 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-inner">
-      <div class="hero-content">
+      <div class="hero-top">
         <div class="hero-badge">
           <span class="badge-dot"></span>
           Бесплатно · Онлайн · 15–18 мая 2026
         </div>
         <h1>Проверьте себя<br>на <span class="hl">реальных фейках</span></h1>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="../материалы/фото/hero-dictation.webp" class="hero-img" alt="Инфодиктант 2026"/>
+      </div>
+      <div class="hero-bottom">
         <p class="hero-sub">Инфодиктант 2026 — бесплатная онлайн-проверка медиаграмотности.<br>Узнайте, умеете ли вы отличать правду от манипуляций.</p>
         <div class="hero-actions">
           <a href="#register" class="btn-primary">Зарегистрироваться →</a>
           <a href="#how" class="btn-outline">Узнать больше</a>
         </div>
         <div class="countdown-label">До начала диктанта</div>
-    <div class="countdown">
-      <div class="cd-unit">
-        <div class="cd-val" id="cdDays">—</div>
-        <div class="cd-lbl">дней</div>
-      </div>
-      <div class="cd-sep">:</div>
-      <div class="cd-unit">
-        <div class="cd-val" id="cdHours">—</div>
-        <div class="cd-lbl">часов</div>
-      </div>
-      <div class="cd-sep">:</div>
-      <div class="cd-unit">
-        <div class="cd-val" id="cdMins">—</div>
-        <div class="cd-lbl">минут</div>
-      </div>
-      <div class="cd-sep">:</div>
-      <div class="cd-unit">
-        <div class="cd-val" id="cdSecs">—</div>
-        <div class="cd-lbl">секунд</div>
-      </div>
-      </div><!-- /countdown -->
-      </div><!-- /hero-content -->
-      <div class="hero-img-wrap">
-        <img src="../материалы/фото/hero-dictation.webp" class="hero-img" alt="Инфодиктант 2026"/>
+        <div class="countdown">
+          <div class="cd-unit">
+            <div class="cd-val" id="cdDays">—</div>
+            <div class="cd-lbl">дней</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit">
+            <div class="cd-val" id="cdHours">—</div>
+            <div class="cd-lbl">часов</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit">
+            <div class="cd-val" id="cdMins">—</div>
+            <div class="cd-lbl">минут</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit">
+            <div class="cd-val" id="cdSecs">—</div>
+            <div class="cd-lbl">секунд</div>
+          </div>
+        </div>
       </div>
     </div><!-- /hero-inner -->
   </div>
