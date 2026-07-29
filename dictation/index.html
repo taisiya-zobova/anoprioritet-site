@@ -80,29 +80,30 @@
 
   /* ===== HERO ===== */
   .hero {
-    position: relative;
     background: var(--hero-bg);
     overflow: hidden;
+  }
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 56px;
     padding: 76px 0 68px;
   }
-  .hero-pattern {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-      radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-    background-size: 32px 32px;
+  .hero-content { flex: 1; min-width: 0; }
+  .hero-img-wrap {
+    flex: 0 0 420px;
+    max-width: 44%;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
   }
-  .hero-glow {
-    position: absolute;
-    right: -80px;
-    top: -80px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(147,197,253,0.12) 0%, transparent 65%);
-    pointer-events: none;
+  .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 500px;
+    object-fit: cover;
   }
-  .hero .wrap { position: relative; }
   .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -587,7 +588,8 @@
     .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
     /* Hero */
-    .hero { padding: 52px 0 46px; }
+    .hero-inner { flex-direction: column; padding: 48px 0 40px; gap: 32px; }
+    .hero-img-wrap { display: none; }
     .hero h1 { font-size: 30px; max-width: 100%; }
     .hero-sub { font-size: 13px; max-width: 100%; }
     .hero-actions { gap: 10px; }
@@ -632,9 +634,13 @@
       <img src="../материалы/лого/Приоритет.png" alt="АНО Приоритет" class="brand-logo"/>
     </a>
     <nav class="menu">
-      <a href="#how">Как участвовать</a>
-      <a href="#register">Регистрация</a>
-      <a href="../">О нас</a>
+      <a href="../#about">О нас</a>
+      <a href="../#dirs">Направления</a>
+      <a href="../#projects">Проекты</a>
+      <a href="../#analytics">Аналитика</a>
+      <a href="../#caps">Возможности</a>
+      <a href="../#partners">Партнёры</a>
+      <a href="../#contacts">Контакты</a>
     </nav>
     <button class="burger" id="burger" aria-label="Меню" style="display:none">
       <span></span><span></span><span></span>
@@ -644,20 +650,20 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-pattern"></div>
-  <div class="hero-glow"></div>
   <div class="wrap">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      Бесплатно · Онлайн · 15–18 мая 2026
-    </div>
-    <h1>Проверьте себя<br>на <span class="hl">реальных фейках</span></h1>
-    <p class="hero-sub">Инфодиктант 2026 — бесплатная онлайн-проверка медиаграмотности.<br>Узнайте, умеете ли вы отличать правду от манипуляций.</p>
-    <div class="hero-actions">
-      <a href="#register" class="btn-primary">Зарегистрироваться →</a>
-      <a href="#how" class="btn-outline">Узнать больше</a>
-    </div>
-    <div class="countdown-label">До начала диктанта</div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Бесплатно · Онлайн · 15–18 мая 2026
+        </div>
+        <h1>Проверьте себя<br>на <span class="hl">реальных фейках</span></h1>
+        <p class="hero-sub">Инфодиктант 2026 — бесплатная онлайн-проверка медиаграмотности.<br>Узнайте, умеете ли вы отличать правду от манипуляций.</p>
+        <div class="hero-actions">
+          <a href="#register" class="btn-primary">Зарегистрироваться →</a>
+          <a href="#how" class="btn-outline">Узнать больше</a>
+        </div>
+        <div class="countdown-label">До начала диктанта</div>
     <div class="countdown">
       <div class="cd-unit">
         <div class="cd-val" id="cdDays">—</div>
@@ -678,7 +684,12 @@
         <div class="cd-val" id="cdSecs">—</div>
         <div class="cd-lbl">секунд</div>
       </div>
-    </div>
+      </div><!-- /countdown -->
+      </div><!-- /hero-content -->
+      <div class="hero-img-wrap">
+        <img src="../материалы/фото/hero-dictation.webp" class="hero-img" alt="Инфодиктант 2026"/>
+      </div>
+    </div><!-- /hero-inner -->
   </div>
 </section>
 
