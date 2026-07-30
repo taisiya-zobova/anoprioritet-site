@@ -340,7 +340,7 @@
   /* ===== TASKS BLOCK ===== */
   .tasks-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
   }
   .task-item {
@@ -756,22 +756,22 @@
         <div class="countdown">
           <div class="cd-unit">
             <div class="cd-val" id="cdDays">—</div>
-            <div class="cd-lbl">дней</div>
+            <div class="cd-lbl" id="cdDaysLbl">дней</div>
           </div>
           <div class="cd-sep">:</div>
           <div class="cd-unit">
             <div class="cd-val" id="cdHours">—</div>
-            <div class="cd-lbl">часов</div>
+            <div class="cd-lbl" id="cdHoursLbl">часов</div>
           </div>
           <div class="cd-sep">:</div>
           <div class="cd-unit">
             <div class="cd-val" id="cdMins">—</div>
-            <div class="cd-lbl">минут</div>
+            <div class="cd-lbl" id="cdMinsLbl">минут</div>
           </div>
           <div class="cd-sep">:</div>
           <div class="cd-unit">
             <div class="cd-val" id="cdSecs">—</div>
-            <div class="cd-lbl">секунд</div>
+            <div class="cd-lbl" id="cdSecsLbl">секунд</div>
           </div>
         </div>
       </div>
@@ -878,27 +878,7 @@
         </div>
         <div class="task-label">Соцсети<br>и мессенджеры</div>
       </div>
-      <div class="task-item">
-        <div class="task-icon">
-          <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
-            <rect x="2" y="3" width="18" height="16" rx="1"/>
-            <path d="M2 15l5-5 4 4 3-3 6 5"/>
-            <circle cx="7" cy="8" r="1.5"/>
-          </svg>
-        </div>
-        <div class="task-label">Изображения</div>
-      </div>
-      <div class="task-item">
-        <div class="task-icon">
-          <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
-            <rect x="2" y="4" width="14" height="14" rx="1"/>
-            <path d="M16 8l4-2v10l-4-2"/>
-            <path d="M7 11l-2-2v4l2-2z" fill="currentColor" stroke="none"/>
-            <path d="M7 11l4-2.5v5L7 11z" fill="currentColor" stroke="none"/>
-          </svg>
-        </div>
-        <div class="task-label">Видео</div>
-      </div>
+
       <div class="task-item">
         <div class="task-icon">
           <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
@@ -1134,6 +1114,12 @@
   // Countdown to May 15 2026 00:00:00 MSK (UTC+3)
   var target = new Date('2026-09-01T00:00:00+03:00').getTime();
   function pad(n) { return String(n).padStart(2, '0'); }
+  function plural(n, one, few, many) {
+    var m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return one;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20)) return few;
+    return many;
+  }
   function tick() {
     var diff = target - Date.now();
     if (diff <= 0) {
@@ -1152,6 +1138,10 @@
     document.getElementById('cdHours').textContent = pad(hours);
     document.getElementById('cdMins').textContent  = pad(mins);
     document.getElementById('cdSecs').textContent  = pad(secs);
+    document.getElementById('cdDaysLbl').textContent  = plural(days,  'день',    'дня',    'дней');
+    document.getElementById('cdHoursLbl').textContent = plural(hours, 'час',     'часа',   'часов');
+    document.getElementById('cdMinsLbl').textContent  = plural(mins,  'минута',  'минуты', 'минут');
+    document.getElementById('cdSecsLbl').textContent  = plural(secs,  'секунда', 'секунды','секунд');
   }
   tick();
   setInterval(tick, 1000);
