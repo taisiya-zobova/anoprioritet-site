@@ -129,10 +129,11 @@
     height: 14px;
     flex-shrink: 0;
   }
+  .badge-sep { color: rgba(255,255,255,0.38); font-size: 14px; line-height: 1; }
   .hero h1 {
     font-family: var(--serif);
     font-weight: 400;
-    font-size: 48px;
+    font-size: 36px;
     line-height: 1.14;
     color: #fff;
     margin: 0 0 16px;
@@ -241,13 +242,14 @@
   .sb-item {
     flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 28px 20px;
     border-right: 1px solid var(--line);
-    gap: 10px;
+    gap: 16px;
   }
+  .sb-text { display: flex; flex-direction: column; gap: 5px; }
   .sb-item:first-child { border-left: 1px solid var(--line); }
   .sb-icon {
     width: 28px;
@@ -263,7 +265,7 @@
   .sb-lbl {
     font-size: 12px;
     color: var(--muted);
-    text-align: center;
+    text-align: left;
     line-height: 1.4;
   }
 
@@ -333,15 +335,18 @@
 
   /* ===== TASKS BLOCK ===== */
   .tasks-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     gap: 12px;
   }
   .task-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 14px 18px;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 18px 10px;
+    text-align: center;
     border: 1px solid var(--line);
     background: var(--bg);
     transition: box-shadow 0.2s, border-color 0.2s;
@@ -375,6 +380,7 @@
   }
   .form-layout {
     max-width: 560px;
+    margin: 0 auto;
   }
 
 
@@ -671,6 +677,10 @@
     /* How */
     .how-grid { grid-template-columns: 1fr; gap: 12px; }
 
+    /* Tasks */
+    .tasks-grid { grid-template-columns: repeat(2, 1fr); }
+    .task-label { font-size: 12px; }
+
     /* Form */
     .form-section { padding: 40px 0 52px; }
     .form-layout { grid-template-columns: 1fr; gap: 32px; }
@@ -717,23 +727,21 @@
           <div class="hero-badge">
             <svg class="badge-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5.5 8l2 2 3-4"/></svg>
             Бесплатно
-          </div>
-          <div class="hero-badge">
+            <span class="badge-sep">·</span>
             <svg class="badge-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c-2 1.5-3 3.5-3 6.5s1 5 3 6.5M8 1.5c2 1.5 3 3.5 3 6.5s-1 5-3 6.5"/></svg>
             Онлайн
-          </div>
-          <div class="hero-badge">
+            <span class="badge-sep">·</span>
             <svg class="badge-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="2.5" width="13" height="12" rx="1"/><path d="M1.5 6.5h13M5.5 1v3M10.5 1v3"/></svg>
             1–4 сентября 2026
           </div>
         </div>
-        <h1>Всероссийский диктант<br>по медиаграмотности<br>«ИнфоДиктант»</h1>
+        <h1>Всероссийский диктант<br>по медиаграмотности<br>«ИнфоДиктант»</h1>
       </div>
       <div class="hero-img-wrap">
         <img src="../материалы/фото/hero-dictation.webp" class="hero-img" alt="Инфодиктант 2026"/>
       </div>
       <div class="hero-bottom">
-        <p class="hero-sub">Научитесь отличать достоверную информацию от фейков, манипуляций и дипфейков. Пройдите онлайн-диктант и узнайте свой уровень медиаграмотности всего за 10 минут.</p>
+        <p class="hero-sub">Научитесь отличать достоверную информацию от фейков, манипуляций и дипфейков. Пройдите онлайн-диктант и узнайте свой уровень медиаграмотности всего за 10 минут.</p>
         <div class="hero-actions">
           <a href="#register" class="btn-primary">Принять участие →</a>
           <a href="#how" class="btn-outline">Как проходит диктант</a>
@@ -777,16 +785,14 @@
           <circle cx="8.5" cy="13" r="1" fill="currentColor" stroke="none"/>
           <circle cx="8.5" cy="17" r="1" fill="currentColor" stroke="none"/>
         </svg>
-        <div class="sb-val">50</div>
-        <div class="sb-lbl">вопросов</div>
+        <div class="sb-text"><div class="sb-val">50</div><div class="sb-lbl">вопросов</div></div>
       </div>
       <div class="sb-item">
         <svg class="sb-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.3">
           <circle cx="14" cy="14" r="10"/>
           <path d="M14 8v6l3.5 3.5"/>
         </svg>
-        <div class="sb-val">~10</div>
-        <div class="sb-lbl">минут</div>
+        <div class="sb-text"><div class="sb-val">~10</div><div class="sb-lbl">минут</div></div>
       </div>
       <div class="sb-item">
         <svg class="sb-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.3">
@@ -795,8 +801,7 @@
           <rect x="19" y="7" width="5" height="17"/>
           <path d="M6.5 19l5-6 5 3 5-9"/>
         </svg>
-        <div class="sb-val">4</div>
-        <div class="sb-lbl">уровня медиаграмотности</div>
+        <div class="sb-text"><div class="sb-val">4</div><div class="sb-lbl">уровня медиаграмотности</div></div>
       </div>
     </div>
   </div>
@@ -816,7 +821,7 @@
           <path d="M5 29c0-5 5.4-9 12-9s12 4 12 9"/>
         </svg>
         <h3 class="how-title">Регистрация</h3>
-        <p class="how-text">Заполните форму: имя, фамилию, email и регион. Регистрация бесплатная и займёт меньше минуты.</p>
+        <p class="how-text">Заполните форму: имя, фамилию, email и регион. Регистрация бесплатная и займёт меньше минуты.</p>
       </div>
 
       <div class="how-card">
@@ -825,7 +830,7 @@
           <path d="M10 11h14M10 17h14M10 23h8"/>
         </svg>
         <h3 class="how-title">Диктант</h3>
-        <p class="how-text">1–4 сентября 2026 пройдите онлайн-тест из 50 вопросов на реальных примерах из медиапространства. Определите, фейк это или правда.</p>
+        <p class="how-text">1–4 сентября 2026 пройдите онлайн-тест из 50 вопросов на реальных примерах из медиапространства. Определите, фейк это или правда.</p>
       </div>
 
       <div class="how-card">
@@ -834,7 +839,7 @@
           <path d="M11 17l4.5 4.5L23 12"/>
         </svg>
         <h3 class="how-title">Результат</h3>
-        <p class="how-text">Узнайте свой уровень медиаграмотности и получите персональный разбор ответов. Сертификат участника придёт на email.</p>
+        <p class="how-text">Узнайте свой уровень медиаграмотности и получите персональный разбор ответов. Сертификат участника придёт на email.</p>
       </div>
 
     </div>
@@ -864,7 +869,7 @@
             <path d="M18 9h2a1 1 0 011 1v6l-3-2H9a1 1 0 01-1-1v-1"/>
           </svg>
         </div>
-        <div class="task-label">Соцсети<br>и мессенджеры</div>
+        <div class="task-label">Соцсети<br>и мессенджеры</div>
       </div>
       <div class="task-item">
         <div class="task-icon">
@@ -894,7 +899,7 @@
             <path d="M7 7h2v2H7zM13 7h2v2h-2zM7 13h2v2H7zM13 13h2v2h-2zM11 7v8M7 11h8"/>
           </svg>
         </div>
-        <div class="task-label">Публикации<br>с ИИ</div>
+        <div class="task-label">Публикации<br>с ИИ</div>
       </div>
       <div class="task-item">
         <div class="task-icon">
@@ -904,7 +909,7 @@
             <circle cx="11" cy="15.5" r=".8" fill="currentColor" stroke="none"/>
           </svg>
         </div>
-        <div class="task-label">Манипуляции<br>и кликбейт</div>
+        <div class="task-label">Манипуляции<br>и кликбейт</div>
       </div>
     </div>
   </div>
@@ -918,7 +923,7 @@
       <div>
         <div class="form-box">
           <h2 class="form-title">Зарегистрироваться</h2>
-          <p class="form-hint">Заполните форму — пришлём ссылку для участия на email.</p>
+          <p class="form-hint">Заполните форму — пришлём ссылку для участия на email.</p>
 
           <form id="regForm" novalidate>
             <div class="form-row">
@@ -1045,12 +1050,12 @@
             <label class="check-row">
               <input type="checkbox" id="fConsent" name="consent" required/>
               <span class="check-text">
-                Я даю согласие на обработку персональных данных в соответствии с&nbsp;Федеральным законом № 152-ФЗ «О персональных данных» и <a href="#">политикой конфиденциальности</a>
+                Я даю согласие на обработку персональных данных в соответствии с&nbsp;Федеральным законом № 152-ФЗ «О персональных данных» и <a href="#">политикой конфиденциальности</a>
               </span>
             </label>
 
             <button type="submit" class="btn-submit" id="submitBtn">
-              Зарегистрироваться на диктант
+              Зарегистрироваться на диктант
             </button>
           </form>
 
@@ -1060,7 +1065,7 @@
               <path d="M16 24l6 6 10-12"/>
             </svg>
             <h3>Вы зарегистрированы!</h3>
-            <p>Ссылка для участия придёт на ваш email за день до начала диктанта — 31 августа 2026 года.</p>
+            <p>Ссылка для участия придёт на ваш email за день до начала диктанта — 31 августа 2026 года.</p>
           </div>
         </div>
       </div>
