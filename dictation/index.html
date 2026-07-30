@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Инфодиктант 2026 — бесплатная онлайн-проверка медиаграмотности от АНО «Приоритет». 15–18 мая 2026." />
+<meta name="description" content="Инфодиктант 2026 — бесплатная онлайн-проверка медиаграмотности от АНО «Приоритет». 1–4 сентября 2026." />
 <title>Инфодиктант 2026 — АНО «Приоритет»</title>
 <link rel="icon" type="image/webp" href="../материалы/лого/Приоритет-мал-лого.webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -107,23 +107,26 @@
     object-fit: contain;
     max-height: 460px;
   }
+  .hero-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
   .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
     background: rgba(255,255,255,0.1);
     border: 1px solid rgba(255,255,255,0.22);
     color: rgba(255,255,255,0.88);
     font-size: 12.5px;
-    padding: 6px 14px;
-    margin-bottom: 28px;
+    padding: 6px 12px;
     letter-spacing: 0.01em;
   }
-  .badge-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--hero-hl);
-    border-radius: 50%;
+  .badge-icon {
+    width: 14px;
+    height: 14px;
     flex-shrink: 0;
   }
   .hero h1 {
@@ -241,11 +244,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px 20px;
+    padding: 28px 20px;
     border-right: 1px solid var(--line);
-    gap: 7px;
+    gap: 10px;
   }
   .sb-item:first-child { border-left: 1px solid var(--line); }
+  .sb-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--accent);
+  }
   .sb-val {
     font-family: var(--serif);
     font-size: 32px;
@@ -323,6 +331,42 @@
     margin: 0;
   }
 
+  /* ===== TASKS BLOCK ===== */
+  .tasks-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .task-item:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(37,99,168,0.08); }
+  .task-icon {
+    width: 38px;
+    height: 38px;
+    color: var(--accent);
+    flex-shrink: 0;
+    background: var(--bg-tint);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+  }
+  .task-icon svg { width: 100%; height: 100%; }
+  .task-label {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.35;
+    font-weight: 400;
+  }
+
   /* ===== FORM SECTION ===== */
   .form-section {
     padding: 60px 0 72px;
@@ -330,52 +374,14 @@
     background: var(--bg-tint);
   }
   .form-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
+    max-width: 560px;
   }
-  .form-aside {
-    padding-top: 8px;
-  }
-  .form-aside-title {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: 22px;
-    color: var(--ink);
-    margin: 0 0 14px;
-    line-height: 1.3;
-  }
-  .form-aside-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .form-aside-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 15px;
-    color: var(--ink-2);
-    line-height: 1.55;
-  }
-  .check-icon {
-    width: 16px;
-    height: 16px;
-    color: var(--accent);
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .form-aside-note {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.6;
-    border-left: 2px solid var(--line);
-    padding-left: 14px;
-  }
+
+
+
+
+
+
   .form-box {
     background: #fff;
     border: 1px solid var(--line);
@@ -668,7 +674,6 @@
     /* Form */
     .form-section { padding: 40px 0 52px; }
     .form-layout { grid-template-columns: 1fr; gap: 32px; }
-    .form-aside { display: none; }
     .form-box { padding: 24px 20px 28px; border: none; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .form-row { grid-template-columns: 1fr; gap: 0; }
     .form-row .form-field { margin-bottom: 14px; }
@@ -708,20 +713,30 @@
   <div class="wrap">
     <div class="hero-inner">
       <div class="hero-top">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          Бесплатно · Онлайн · 15–18 мая 2026
+        <div class="hero-badges">
+          <div class="hero-badge">
+            <svg class="badge-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5.5 8l2 2 3-4"/></svg>
+            Бесплатно
+          </div>
+          <div class="hero-badge">
+            <svg class="badge-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c-2 1.5-3 3.5-3 6.5s1 5 3 6.5M8 1.5c2 1.5 3 3.5 3 6.5s-1 5-3 6.5"/></svg>
+            Онлайн
+          </div>
+          <div class="hero-badge">
+            <svg class="badge-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="2.5" width="13" height="12" rx="1"/><path d="M1.5 6.5h13M5.5 1v3M10.5 1v3"/></svg>
+            1–4 сентября 2026
+          </div>
         </div>
-        <h1>Проверьте себя<br>на <span class="hl">реальных фейках</span></h1>
+        <h1>Всероссийский диктант<br>по медиаграмотности<br>«ИнфоДиктант»</h1>
       </div>
       <div class="hero-img-wrap">
         <img src="../материалы/фото/hero-dictation.webp" class="hero-img" alt="Инфодиктант 2026"/>
       </div>
       <div class="hero-bottom">
-        <p class="hero-sub">Инфодиктант 2026 — бесплатная онлайн-проверка медиаграмотности.<br>Узнайте, умеете ли вы отличать правду от манипуляций.</p>
+        <p class="hero-sub">Научитесь отличать достоверную информацию от фейков, манипуляций и дипфейков. Пройдите онлайн-диктант и узнайте свой уровень медиаграмотности всего за 10 минут.</p>
         <div class="hero-actions">
-          <a href="#register" class="btn-primary">Зарегистрироваться →</a>
-          <a href="#how" class="btn-outline">Узнать больше</a>
+          <a href="#register" class="btn-primary">Принять участие →</a>
+          <a href="#how" class="btn-outline">Как проходит диктант</a>
         </div>
         <div class="countdown-label">До начала диктанта</div>
         <div class="countdown">
@@ -755,14 +770,31 @@
   <div class="wrap">
     <div class="stats-inner">
       <div class="sb-item">
+        <svg class="sb-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.3">
+          <path d="M6 4h16v20H6z"/>
+          <path d="M10 9h8M10 13h8M10 17h5"/>
+          <circle cx="8.5" cy="9" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="8.5" cy="13" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="8.5" cy="17" r="1" fill="currentColor" stroke="none"/>
+        </svg>
         <div class="sb-val">50</div>
         <div class="sb-lbl">вопросов</div>
       </div>
       <div class="sb-item">
+        <svg class="sb-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.3">
+          <circle cx="14" cy="14" r="10"/>
+          <path d="M14 8v6l3.5 3.5"/>
+        </svg>
         <div class="sb-val">~10</div>
         <div class="sb-lbl">минут</div>
       </div>
       <div class="sb-item">
+        <svg class="sb-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.3">
+          <rect x="4" y="19" width="5" height="5"/>
+          <rect x="11.5" y="13" width="5" height="11"/>
+          <rect x="19" y="7" width="5" height="17"/>
+          <path d="M6.5 19l5-6 5 3 5-9"/>
+        </svg>
         <div class="sb-val">4</div>
         <div class="sb-lbl">уровня медиаграмотности</div>
       </div>
@@ -774,7 +806,7 @@
 <section class="block" id="how">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title">Как это работает</h2>
+      <h2 class="sec-title">Как проходит диктант</h2>
     </div>
     <div class="how-grid">
 
@@ -793,7 +825,7 @@
           <path d="M10 11h14M10 17h14M10 23h8"/>
         </svg>
         <h3 class="how-title">Диктант</h3>
-        <p class="how-text">С 15 по 18 мая пройдите онлайн-тест из 50 вопросов на реальных примерах из медиапространства. Определите, фейк это или правда.</p>
+        <p class="how-text">1–4 сентября 2026 пройдите онлайн-тест из 50 вопросов на реальных примерах из медиапространства. Определите, фейк это или правда.</p>
       </div>
 
       <div class="how-card">
@@ -809,37 +841,79 @@
   </div>
 </section>
 
+<!-- TASKS BLOCK -->
+<section class="block" id="tasks">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">Какие задания вас ждут</h2>
+    </div>
+    <div class="tasks-grid">
+      <div class="task-item">
+        <div class="task-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="3" y="2" width="16" height="18" rx="1"/>
+            <path d="M7 7h8M7 11h8M7 15h5"/>
+          </svg>
+        </div>
+        <div class="task-label">Новости</div>
+      </div>
+      <div class="task-item">
+        <div class="task-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M4 4h14a1 1 0 011 1v8a1 1 0 01-1 1H8l-4 3V5a1 1 0 011-1z"/>
+            <path d="M18 9h2a1 1 0 011 1v6l-3-2H9a1 1 0 01-1-1v-1"/>
+          </svg>
+        </div>
+        <div class="task-label">Соцсети<br>и мессенджеры</div>
+      </div>
+      <div class="task-item">
+        <div class="task-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="2" y="3" width="18" height="16" rx="1"/>
+            <path d="M2 15l5-5 4 4 3-3 6 5"/>
+            <circle cx="7" cy="8" r="1.5"/>
+          </svg>
+        </div>
+        <div class="task-label">Изображения</div>
+      </div>
+      <div class="task-item">
+        <div class="task-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="2" y="4" width="14" height="14" rx="1"/>
+            <path d="M16 8l4-2v10l-4-2"/>
+            <path d="M7 11l-2-2v4l2-2z" fill="currentColor" stroke="none"/>
+            <path d="M7 11l4-2.5v5L7 11z" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="task-label">Видео</div>
+      </div>
+      <div class="task-item">
+        <div class="task-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="3" y="3" width="16" height="16" rx="2"/>
+            <path d="M7 7h2v2H7zM13 7h2v2h-2zM7 13h2v2H7zM13 13h2v2h-2zM11 7v8M7 11h8"/>
+          </svg>
+        </div>
+        <div class="task-label">Публикации<br>с ИИ</div>
+      </div>
+      <div class="task-item">
+        <div class="task-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="11" cy="11" r="9"/>
+            <path d="M11 7v5"/>
+            <circle cx="11" cy="15.5" r=".8" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="task-label">Манипуляции<br>и кликбейт</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- REGISTRATION FORM -->
 <div class="form-section" id="register">
   <div class="wrap">
     <div class="form-layout">
-
-      <div class="form-aside">
-        <h3 class="form-aside-title">Почему стоит участвовать</h3>
-        <ul class="form-aside-list">
-          <li>
-            <svg class="check-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5 8l2 2 4-4"/></svg>
-            Бесплатно для всех участников
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5 8l2 2 4-4"/></svg>
-            Реальные примеры фейков из новостного потока
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5 8l2 2 4-4"/></svg>
-            Персональный разбор и уровень медиаграмотности
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5 8l2 2 4-4"/></svg>
-            Электронный сертификат участника
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5 8l2 2 4-4"/></svg>
-            Проходится онлайн в удобное время
-          </li>
-        </ul>
-        <p class="form-aside-note">Ссылка для участия придёт на email за день до старта диктанта — 14 мая 2026 года.</p>
-      </div>
 
       <div>
         <div class="form-box">
@@ -986,7 +1060,7 @@
               <path d="M16 24l6 6 10-12"/>
             </svg>
             <h3>Вы зарегистрированы!</h3>
-            <p>Ссылка для участия придёт на ваш email за день до начала диктанта — 14 мая 2026 года.</p>
+            <p>Ссылка для участия придёт на ваш email за день до начала диктанта — 31 августа 2026 года.</p>
           </div>
         </div>
       </div>
@@ -1046,7 +1120,7 @@
 
 <script>
   // Countdown to May 15 2026 00:00:00 MSK (UTC+3)
-  var target = new Date('2026-05-15T00:00:00+03:00').getTime();
+  var target = new Date('2026-09-01T00:00:00+03:00').getTime();
   function pad(n) { return String(n).padStart(2, '0'); }
   function tick() {
     var diff = target - Date.now();
