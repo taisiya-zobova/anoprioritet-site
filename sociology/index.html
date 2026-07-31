@@ -73,6 +73,24 @@
   .soc-info-icon svg { width: 100%; height: 100%; }
   .soc-info-text { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
 
+  /* HERO SOC */
+  .hero-soc { background: var(--bg-tint); border-bottom: 1px solid var(--line); }
+  .hero-soc-inner { display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: center; padding: 64px 0 56px; }
+  .hero-soc h1 { font-family: var(--serif); font-weight: 400; font-size: 38px; color: var(--ink); margin: 0 0 14px; letter-spacing: -0.01em; }
+  .hero-soc-lead { font-size: 14px; color: var(--ink-2); line-height: 1.65; margin: 0 0 40px; }
+  .hero-soc-img { width: 100%; height: auto; display: block; }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .hero-stat { display: flex; align-items: center; gap: 12px; }
+  .hero-stat-icon { width: 30px; height: 30px; flex-shrink: 0; color: var(--accent); }
+  .hero-stat-icon img, .hero-stat-icon svg { width: 100%; height: 100%; display: block; }
+  .hero-stat-text { font-size: 12.5px; color: var(--ink-2); line-height: 1.4; }
+
+  /* ABOUT ROW */
+  .about-row { display: flex; gap: 20px; align-items: stretch; padding: 28px 32px; border-bottom: 1px solid var(--line-2); }
+  .about-icon-col { flex-shrink: 0; width: 56px; }
+  .about-icon-col img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .about-text { display: flex; flex-direction: column; justify-content: center; }
+
   /* Stats row */
   .soc-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line-2); }
   .soc-stat { padding: 16px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; border-right: 1px solid var(--line-2); }
@@ -98,11 +116,11 @@
   .btn-participate:hover { background: var(--accent-soft); }
 
   /* CTA SECTION */
-  .cta-section { border-top: 1px solid var(--line); padding: 52px 0 60px; background: var(--bg-tint); }
-  .cta-layout { display: grid; grid-template-columns: 340px 1fr; gap: 60px; align-items: start; }
-  .cta-left { display: flex; flex-direction: column; gap: 0; }
-  .cta-icon { width: 56px; height: 56px; color: var(--accent); margin-bottom: 18px; }
-  .cta-icon svg { width: 100%; height: 100%; }
+  .cta-section { border-top: 1px solid var(--line); background: var(--bg-tint); }
+  .cta-layout { display: flex; align-items: stretch; max-width: 1200px; margin: 0 auto; }
+  .cta-order-col { flex-shrink: 0; width: 240px; background: rgba(37,99,168,0.07); display: flex; align-items: center; justify-content: center; padding: 40px 32px; }
+  .cta-order-col img { width: 100%; height: auto; display: block; }
+  .cta-right { flex: 1; padding: 52px 28px 60px 52px; display: flex; flex-direction: column; }
   .cta-title { font-family: var(--serif); font-weight: 400; font-size: 24px; color: var(--ink); margin: 0 0 12px; }
   .cta-desc { font-size: 13px; color: var(--ink-2); line-height: 1.7; margin: 0 0 22px; }
   .btn-more { display: inline-flex; align-items: center; gap: 6px; padding: 11px 22px; border: 1px solid var(--accent); color: var(--accent); font-size: 13px; font-family: var(--sans); cursor: pointer; background: transparent; transition: background 0.15s, color 0.15s; text-decoration: none; white-space: nowrap; }
@@ -182,6 +200,11 @@
     .burger.open span:nth-child(2) { opacity: 0; }
     .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
+    .hero-soc-inner { grid-template-columns: 1fr; }
+    .hero-soc-img { display: none; }
+    .hero-soc h1 { font-size: 28px; }
+    .hero-soc-inner { padding: 36px 0 32px; }
+    .about-row { padding: 20px; }
     .soc-layout { grid-template-columns: 1fr; }
     .soc-card-top { grid-template-columns: 1fr; }
     .soc-card-img { display: none; }
@@ -193,7 +216,9 @@
     .soc-stat:nth-child(odd) { border-right: 1px solid var(--line-2); }
     .soc-stat:nth-child(even) { border-right: none; }
     .part-card { padding: 24px 20px; }
-    .cta-layout { grid-template-columns: 1fr; gap: 32px; }
+    .cta-layout { flex-direction: column; }
+    .cta-order-col { width: 100%; height: 120px; }
+    .cta-right { padding: 28px 16px 40px; }
     .btn-more { align-self: start; }
     .cta-features { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .foot-top { flex-direction: column; gap: 32px; }
@@ -227,16 +252,52 @@
   </div>
 </header>
 
-<!-- PAGE HEADER -->
-<div class="wrap">
-  <div class="breadcrumb">
-    <a href="../">Главная</a>
-    <span class="breadcrumb-sep">/</span>
-    <span>Социальные опросы</span>
-  </div>
-  <div class="page-header">
-    <h1>Социальные опросы</h1>
-    <p>Проводим социологические исследования для органов власти, бизнеса, НКО и общественных организаций по всей России.</p>
+<!-- HERO -->
+<div class="hero-soc">
+  <div class="wrap">
+    <div class="hero-soc-inner">
+      <div>
+        <h1>Социальные опросы</h1>
+        <p class="hero-soc-lead">Проводим социологические исследования для органов власти, бизнеса, НКО и общественных организаций по всей России.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+              <img src="../материалы/фото/icon-russia.svg" alt="" style="width:100%;height:100%;display:block"/>
+            </div>
+            <div class="hero-stat-text">Онлайн-опросы<br>по всей России</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M18 20V10M13 20V6M8 20v-8M3 20h18" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="hero-stat-text">Тысячи<br>респондентов</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="3" y="11" width="18" height="11" rx="1"/>
+                <path d="M7 11V7a5 5 0 0110 0v4"/>
+              </svg>
+            </div>
+            <div class="hero-stat-text">Конфиденциальность<br>данных</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3 3"/>
+              </svg>
+            </div>
+            <div class="hero-stat-text">Оперативные<br>результаты</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="../материалы/фото/hero-sociology.png" alt="Социологические исследования" class="hero-soc-img"/>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -246,16 +307,13 @@
 
     <!-- LEFT CARD: О наших опросах -->
     <div class="soc-card">
-      <div class="soc-card-top">
-        <div class="soc-card-top-text">
-          <div class="soc-card-icon">
-            <img src="../материалы/фото/icon-about.svg" alt="" style="width:100%;height:100%;display:block"/>
-          </div>
+      <div class="about-row">
+        <div class="about-icon-col">
+          <img src="../материалы/фото/icon-about.svg" alt="" style="width:100%;height:100%;object-fit:contain;display:block"/>
+        </div>
+        <div class="about-text">
           <div class="soc-card-title">О наших опросах</div>
           <p class="soc-card-desc">Мы проводим качественные и количественные социальные опросы в онлайн-формате.</p>
-        </div>
-        <div class="soc-card-img">
-          <img src="../материалы/фото/hero-sociology.png" alt="Социологические исследования"/>
         </div>
       </div>
 
@@ -321,40 +379,6 @@
         <p class="soc-info-text">Наши исследования помогают принимать обоснованные решения, разрабатывать программы и оценивать эффективность инициатив.</p>
       </div>
 
-      <div class="soc-stats">
-        <div class="soc-stat">
-          <div class="soc-stat-icon">
-            <img src="../материалы/фото/icon-russia.svg" alt="" style="width:100%;height:100%;display:block"/>
-          </div>
-          <div class="soc-stat-text">Онлайн-опросы<br>по всей России</div>
-        </div>
-        <div class="soc-stat">
-          <div class="soc-stat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M18 20V10M13 20V6M8 20v-8M3 20h18" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="soc-stat-text">Тысячи<br>респондентов</div>
-        </div>
-        <div class="soc-stat">
-          <div class="soc-stat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-              <rect x="3" y="11" width="18" height="11" rx="1"/>
-              <path d="M7 11V7a5 5 0 0110 0v4"/>
-            </svg>
-          </div>
-          <div class="soc-stat-text">Конфиденциальность<br>данных</div>
-        </div>
-        <div class="soc-stat">
-          <div class="soc-stat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M12 7v5l3 3"/>
-            </svg>
-          </div>
-          <div class="soc-stat-text">Оперативные<br>результаты</div>
-        </div>
-      </div>
     </div>
 
     <!-- RIGHT CARD: Прими участие -->
@@ -398,16 +422,14 @@
 
 <!-- CTA SECTION -->
 <div class="cta-section">
-  <div class="wrap">
-    <div class="cta-layout">
-      <div class="cta-left">
-        <div class="cta-icon">
-          <img src="../материалы/фото/icon-order.svg" alt="" style="width:100%;height:100%;display:block"/>
-        </div>
-        <div class="cta-title">Закажи исследование</div>
-        <p class="cta-desc">Нужны данные для принятия решений? Мы проведём исследование под ваши задачи и предоставим подробный аналитический отчёт.</p>
-        <a href="../#contacts" class="btn-more">Узнать больше →</a>
-      </div>
+  <div class="cta-layout">
+    <div class="cta-order-col">
+      <img src="../материалы/фото/icon-order.svg" alt="" style="width:100%;display:block"/>
+    </div>
+    <div class="cta-right">
+      <div class="cta-title">Закажи исследование</div>
+      <p class="cta-desc">Нужны данные для принятия решений? Мы проведём исследование под ваши задачи и предоставим подробный аналитический отчёт.</p>
+      <a href="../#contacts" class="btn-more">Узнать больше →</a>
       <div class="cta-features">
         <div class="cta-feat">
           <div class="cta-feat-icon">
