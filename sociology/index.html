@@ -69,7 +69,7 @@
 
   /* Info banner */
   .soc-info-banner { margin: 24px 32px; background: var(--bg-tint); border-left: 3px solid var(--accent); padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; }
-  .soc-info-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--accent); margin-top: 1px; }
+  .soc-info-icon { width: 40px; height: 40px; flex-shrink: 0; color: var(--accent); }
   .soc-info-icon svg { width: 100%; height: 100%; }
   .soc-info-text { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
 
@@ -318,9 +318,10 @@
 
       <div class="soc-info-banner">
         <div class="soc-info-icon">
-          <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="9" cy="9" r="7.5"/>
-            <path d="M9 8v5M9 6h.01"/>
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="10" cy="10" r="8.5"/>
+            <line x1="10" y1="5.5" x2="10" y2="12" stroke-linecap="round"/>
+            <circle cx="10" cy="15" r="1.2" fill="currentColor" stroke="none"/>
           </svg>
         </div>
         <p class="soc-info-text">Наши исследования помогают принимать обоснованные решения, разрабатывать программы и оценивать эффективность инициатив.</p>
@@ -331,8 +332,8 @@
           <div class="soc-stat-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
               <circle cx="12" cy="12" r="9"/>
-              <path d="M2 12h2M20 12h2M12 2v2M12 20v2"/>
-              <path d="M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+              <path d="M3.5 9h17M3.5 15h17"/>
+              <path d="M12 3c-2 2.5-3 5.5-3 9s1 6.5 3 9M12 3c2 2.5 3 5.5 3 9s-1 6.5-3 9"/>
             </svg>
           </div>
           <div class="soc-stat-text">Онлайн-опросы<br>по всей России</div>
@@ -340,11 +341,7 @@
         <div class="soc-stat">
           <div class="soc-stat-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-              <circle cx="9" cy="7" r="3"/>
-              <path d="M3 19c0-3.3 2.7-6 6-6"/>
-              <circle cx="16" cy="7" r="3"/>
-              <path d="M21 19c0-3.3-2.7-6-6-6"/>
-              <path d="M12 13c1.5 0 3 .8 4 2"/>
+              <path d="M18 20V10M13 20V6M8 20v-8M3 20h18" stroke-linecap="round"/>
             </svg>
           </div>
           <div class="soc-stat-text">Тысячи<br>респондентов</div>
@@ -436,9 +433,10 @@
         <div class="cta-feat">
           <div class="cta-feat-icon">
             <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.3">
-              <circle cx="18" cy="18" r="14"/>
-              <circle cx="18" cy="18" r="6"/>
-              <path d="M18 4v4M18 28v4M4 18h4M28 18h4"/>
+              <circle cx="14" cy="11" r="5.5"/>
+              <path d="M4 31c0-5.5 4.5-10 10-10h2.5"/>
+              <circle cx="27" cy="25" r="7"/>
+              <path d="M23.5 25l2.5 2.5 4.5-4.5"/>
             </svg>
           </div>
           <div class="cta-feat-name">Индивидуальный подход</div>
@@ -447,9 +445,10 @@
         <div class="cta-feat">
           <div class="cta-feat-icon">
             <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.3">
-              <path d="M10 18a8 8 0 1016 0"/>
-              <path d="M18 10V4M18 4l-4 4M18 4l4 4"/>
-              <rect x="6" y="26" width="24" height="6" rx="1"/>
+              <path d="M9 15A10 10 0 0 1 27 15"/>
+              <path d="M24 12l3 3 3-3"/>
+              <path d="M27 21A10 10 0 0 1 9 21"/>
+              <path d="M6 24l3-3 3 3"/>
             </svg>
           </div>
           <div class="cta-feat-name">Полный цикл работ</div>
