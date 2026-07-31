@@ -77,13 +77,15 @@
   .hero-soc { background: var(--bg); border-bottom: 1px solid var(--line); }
   .hero-soc-inner { display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: center; padding: 64px 0 56px; }
   .hero-soc h1 { font-family: var(--serif); font-weight: 400; font-size: 38px; color: var(--ink); margin: 0 0 14px; letter-spacing: -0.01em; }
-  .hero-soc-lead { font-size: 14px; color: var(--ink-2); line-height: 1.65; margin: 0 0 40px; }
+  .hero-soc-lead { font-size: 14px; color: var(--ink-2); line-height: 1.65; margin: 0 0 24px; }
+  .btn-hero { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: var(--accent); color: #fff; font-size: 14px; font-weight: 500; font-family: var(--sans); text-decoration: none; transition: background 0.15s; margin-bottom: 28px; }
+  .btn-hero:hover { background: var(--accent-soft); }
   .hero-soc-img { width: 100%; height: auto; display: block; }
   .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .hero-stat { display: flex; align-items: center; gap: 14px; background: rgba(37,99,168,0.07); border: 1px solid rgba(37,99,168,0.25); padding: 14px 18px; }
-  .hero-stat-icon { width: 36px; height: 36px; flex-shrink: 0; color: var(--accent); }
+  .hero-stat { display: flex; align-items: center; gap: 12px; background: var(--bg-tint); border: 1px solid var(--line); padding: 12px 16px; }
+  .hero-stat-icon { width: 28px; height: 28px; flex-shrink: 0; color: var(--accent); }
   .hero-stat-icon img, .hero-stat-icon svg { width: 100%; height: 100%; display: block; }
-  .hero-stat-text { font-size: 14px; color: var(--ink-2); line-height: 1.4; }
+  .hero-stat-text { font-size: 13px; color: var(--muted); line-height: 1.35; }
 
   /* ABOUT ROW */
   .about-row { display: flex; gap: 20px; align-items: stretch; padding: 28px 32px; border-bottom: 1px solid var(--line-2); }
@@ -118,14 +120,14 @@
   /* CTA SECTION */
   .cta-section { border-top: 1px solid var(--line); background: var(--bg-tint); padding: 52px 0 64px; }
   .cta-layout { display: flex; align-items: center; gap: 0; }
-  .cta-main { display: flex; align-items: center; gap: 28px; padding-right: 48px; border-right: 1px solid var(--line); flex-shrink: 0; }
-  .cta-order-img { width: 180px; height: auto; display: block; flex-shrink: 0; }
-  .cta-main-text { display: flex; flex-direction: column; min-width: 200px; }
+  .cta-main { display: flex; align-items: center; gap: 24px; padding-right: 36px; border-right: 1px solid var(--line); flex-shrink: 0; }
+  .cta-order-img { width: 140px; height: auto; display: block; flex-shrink: 0; mix-blend-mode: multiply; }
+  .cta-main-text { display: flex; flex-direction: column; max-width: 260px; }
   .cta-title { font-family: var(--serif); font-weight: 400; font-size: 24px; color: var(--ink); margin: 0 0 12px; }
   .cta-desc { font-size: 13px; color: var(--ink-2); line-height: 1.7; margin: 0 0 22px; }
   .btn-more { display: inline-flex; align-items: center; gap: 6px; padding: 11px 22px; border: 1px solid var(--accent); color: var(--accent); font-size: 13px; font-family: var(--sans); cursor: pointer; background: transparent; transition: background 0.15s, color 0.15s; text-decoration: none; white-space: nowrap; }
   .btn-more:hover { background: var(--accent); color: #fff; }
-  .cta-feats { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-left: 48px; }
+  .cta-feats { flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-left: 36px; }
   .cta-feat { display: flex; flex-direction: column; gap: 10px; }
   .cta-feat-icon { width: 36px; height: 36px; color: var(--accent); }
   .cta-feat-icon svg { width: 100%; height: 100%; }
@@ -202,6 +204,7 @@
     .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
     .hero-soc-inner { grid-template-columns: 1fr; }
+    .btn-hero { width: 100%; justify-content: center; }
     .hero-soc-img { display: none; }
     .hero-soc h1 { font-size: 28px; }
     .hero-soc-inner { padding: 36px 0 32px; }
@@ -260,6 +263,7 @@
       <div>
         <h1>Социальные опросы</h1>
         <p class="hero-soc-lead">Проводим социологические исследования для органов власти, бизнеса, НКО и общественных организаций по всей России.</p>
+        <a href="../#contacts" class="btn-hero">Заказать исследование →</a>
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="hero-stat-icon">
