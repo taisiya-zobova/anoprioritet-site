@@ -68,7 +68,7 @@
   .feat-sub { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
 
   /* Info banner */
-  .soc-info-banner { margin: 24px 32px; background: var(--bg-tint); border-left: 3px solid var(--accent); padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; }
+  .soc-info-banner { margin: 24px 32px; background: var(--bg-tint); border-left: 3px solid var(--accent); padding: 14px 18px; display: flex; gap: 12px; align-items: center; }
   .soc-info-icon { width: 40px; height: 40px; flex-shrink: 0; color: var(--accent); }
   .soc-info-icon svg { width: 100%; height: 100%; }
   .soc-info-text { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
@@ -318,7 +318,7 @@
 
       <div class="soc-info-banner">
         <div class="soc-info-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1">
             <circle cx="10" cy="10" r="8.5"/>
             <line x1="10" y1="5.5" x2="10" y2="12" stroke-linecap="round"/>
             <circle cx="10" cy="15" r="1.2" fill="currentColor" stroke="none"/>
@@ -330,10 +330,8 @@
       <div class="soc-stats">
         <div class="soc-stat">
           <div class="soc-stat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M3.5 9h17M3.5 15h17"/>
-              <path d="M12 3c-2 2.5-3 5.5-3 9s1 6.5 3 9M12 3c2 2.5 3 5.5 3 9s-1 6.5-3 9"/>
+            <svg viewBox="0 0 24 22" fill="currentColor" stroke="none">
+              <path d="M1 11L1 9L2 7L1 5L3 4L3 6L5 3L6 5L7 2L9 3L9 5L11 2L14 2L15 4L17 2L20 4L22 5L22 8L21 10L22 12L21 14L22 16L20 18L19 15L18 12L16 14L13 15L10 15L7 15L5 15L3 13Z"/>
             </svg>
           </div>
           <div class="soc-stat-text">Онлайн-опросы<br>по всей России</div>
@@ -395,13 +393,7 @@
           </svg>
           5 вопросов · около 3 минут
         </div>
-        <div class="survey-meta-item">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4">
-            <rect x="1.5" y="2.5" width="11" height="9" rx="1"/>
-            <path d="M1.5 5.5h11"/>
-          </svg>
-          Анонимно · данные обезличены
-        </div>
+
       </div>
 
       <button class="btn-participate" onclick="openSurvey()">
@@ -419,15 +411,15 @@
       <div class="cta-left">
         <div class="cta-icon">
           <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.3">
-            <rect x="10" y="8" width="28" height="36" rx="1"/>
-            <path d="M17 18h14M17 24h14M17 30h8"/>
-            <circle cx="40" cy="40" r="10"/>
-            <path d="M36 40l3 3 5-5"/>
+            <rect x="8" y="6" width="24" height="30" rx="1"/>
+            <path d="M13 15h14M13 21h14M13 27h9"/>
+            <circle cx="42" cy="44" r="11"/>
+            <path d="M38 44l3 3 5-5"/>
           </svg>
         </div>
         <div class="cta-title">Закажи исследование</div>
         <p class="cta-desc">Нужны данные для принятия решений? Мы проведём исследование под ваши задачи и предоставим подробный аналитический отчёт.</p>
-        <a href="../#contacts" class="btn-more">Узнать больше</a>
+        <a href="../#contacts" class="btn-more">Узнать больше →</a>
       </div>
       <div class="cta-features">
         <div class="cta-feat">
