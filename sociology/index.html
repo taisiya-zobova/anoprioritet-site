@@ -75,9 +75,13 @@
 
   /* HERO SOC */
   .hero-soc { background: var(--bg); border-bottom: 1px solid var(--line); }
-  .hero-soc-inner { display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: center; padding: 64px 0 56px; }
+  .hero-soc-inner { display: grid; grid-template-columns: 1fr 540px; gap: 32px; align-items: center; padding: 64px 0 56px; }
   .hero-soc h1 { font-family: var(--serif); font-weight: 400; font-size: 38px; color: var(--ink); margin: 0 0 14px; letter-spacing: -0.01em; }
   .hero-soc-lead { font-size: 14px; color: var(--ink-2); line-height: 1.65; margin: 0 0 24px; }
+  .hero-announce { display: inline-flex; align-items: center; gap: 8px; background: rgba(37,99,168,0.07); border: 1px solid rgba(37,99,168,0.2); padding: 6px 14px 6px 10px; margin-bottom: 20px; font-size: 12.5px; color: var(--accent); text-decoration: none; transition: background 0.15s; }
+  .hero-announce:hover { background: rgba(37,99,168,0.13); }
+  .hero-announce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
   .btn-hero { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: var(--accent); color: #fff; font-size: 14px; font-weight: 500; font-family: var(--sans); text-decoration: none; transition: background 0.15s; margin-bottom: 28px; }
   .btn-hero:hover { background: var(--accent-soft); }
   .hero-soc-img { width: 100%; height: auto; display: block; }
@@ -204,6 +208,7 @@
     .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
     .hero-soc-inner { grid-template-columns: 1fr; }
+    .hero-announce { width: 100%; }
     .btn-hero { width: 100%; justify-content: center; }
     .hero-soc-img { display: none; }
     .hero-soc h1 { font-size: 28px; }
@@ -261,9 +266,13 @@
   <div class="wrap">
     <div class="hero-soc-inner">
       <div>
+        <a href="#survey-card" class="hero-announce">
+          <span class="hero-announce-dot"></span>
+          Идёт исследование: 3-я волна опроса по фейкам
+        </a>
         <h1>Социальные опросы</h1>
         <p class="hero-soc-lead">Проводим социологические исследования для органов власти, бизнеса, НКО и общественных организаций по всей России.</p>
-        <a href="../#contacts" class="btn-hero">Заказать исследование →</a>
+        <a href="#cta" class="btn-hero">Заказать исследование →</a>
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="hero-stat-icon">
@@ -387,7 +396,7 @@
     </div>
 
     <!-- RIGHT CARD: Прими участие -->
-    <div class="part-card">
+    <div class="part-card" id="survey-card">
       <div class="part-head">
         <div class="part-head-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
@@ -426,7 +435,7 @@
 </div>
 
 <!-- CTA SECTION -->
-<div class="cta-section">
+<div class="cta-section" id="cta">
   <div class="wrap">
     <div class="cta-layout">
       <div class="cta-main">
