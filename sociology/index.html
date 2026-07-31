@@ -75,7 +75,7 @@
 
   /* HERO SOC */
   .hero-soc { background: #f4f4f9; border-bottom: 1px solid var(--line); }
-  .hero-soc-inner { display: grid; grid-template-columns: 1fr 540px; gap: 32px; align-items: center; padding: 64px 0 56px; }
+  .hero-soc-inner { display: grid; grid-template-columns: 1fr 540px; gap: 16px; align-items: center; padding: 64px 0 56px; }
   .hero-soc-left { max-width: 400px; }
   .hero-soc h1 { font-family: var(--serif); font-weight: 400; font-size: 38px; color: var(--ink); margin: 0 0 14px; letter-spacing: -0.01em; }
   .hero-soc-lead { font-size: 14px; color: var(--ink-2); line-height: 1.65; margin: 0 0 24px; }
@@ -86,8 +86,8 @@
   .btn-hero { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: var(--accent); color: #fff; font-size: 14px; font-weight: 500; font-family: var(--sans); text-decoration: none; transition: background 0.15s; margin-top: 20px; }
   .btn-hero:hover { background: var(--accent-soft); }
   .hero-soc-img { width: 100%; height: auto; display: block; }
-  .hero-stats { display: flex; flex-wrap: wrap; gap: 10px; }
-  .hero-stat { display: flex; align-items: center; gap: 12px; background: var(--bg-tint); border: 1px solid var(--line); padding: 10px 14px; flex: 0 0 auto; }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero-stat { display: flex; align-items: center; gap: 12px; background: var(--bg-tint); border: 1px solid var(--line); padding: 14px 16px; }
   .hero-stat-icon { width: 28px; height: 28px; flex-shrink: 0; color: var(--accent); }
   .hero-stat-icon img, .hero-stat-icon svg { width: 100%; height: 100%; display: block; }
   .hero-stat-text { font-size: 13px; color: var(--muted); line-height: 1.35; }
@@ -107,7 +107,7 @@
   .soc-stat-text { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
 
   /* RIGHT: PARTICIPATION CARD */
-  .part-card { border: 1px solid var(--line); background: var(--bg); padding: 32px 28px; display: flex; flex-direction: column; gap: 0; align-self: start; }
+  .part-card { border: 1px solid var(--line); background: var(--bg); padding: 32px 28px; display: flex; flex-direction: column; gap: 0; }
   .part-head { display: flex; gap: 14px; align-items: flex-start; padding-bottom: 24px; border-bottom: 1px solid var(--line-2); margin-bottom: 24px; }
   .part-head-icon { width: 44px; height: 44px; flex-shrink: 0; color: var(--accent); background: var(--bg-tint); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 10px; }
   .part-head-icon svg { width: 100%; height: 100%; }
@@ -124,10 +124,11 @@
 
   /* CTA SECTION */
   .cta-section { border-top: 1px solid var(--line); background: var(--bg-tint); padding: 52px 0 64px; }
-  .cta-layout { display: flex; align-items: flex-start; gap: 0; }
-  .cta-main { display: flex; align-items: flex-start; gap: 24px; padding-right: 36px; border-right: 1px solid var(--line); flex-shrink: 0; }
-  .cta-order-img { width: 210px; height: auto; display: block; flex-shrink: 0; mix-blend-mode: multiply; }
-  .cta-main-text { display: flex; flex-direction: column; max-width: 260px; }
+  .cta-layout { display: flex; align-items: stretch; gap: 0; }
+  .cta-img-col { flex-shrink: 0; padding-right: 36px; border-right: 1px solid var(--line); display: flex; align-items: flex-start; }
+  .cta-order-img { width: 200px; height: 100%; object-fit: contain; display: block; mix-blend-mode: multiply; }
+  .cta-main-text { flex-shrink: 0; display: flex; flex-direction: column; max-width: 210px; padding: 0 32px; border-right: 1px solid var(--line); }
+  .cta-spacer { flex: 1; }
   .cta-title { font-family: var(--serif); font-weight: 400; font-size: 24px; color: var(--ink); margin: 0 0 12px; }
   .cta-desc { font-size: 13px; color: var(--ink-2); line-height: 1.7; margin: 0 0 22px; }
   .btn-more { display: inline-flex; align-items: center; gap: 6px; padding: 11px 22px; border: 1px solid var(--accent); color: var(--accent); font-size: 13px; font-family: var(--sans); cursor: pointer; background: transparent; transition: background 0.15s, color 0.15s; text-decoration: none; white-space: nowrap; }
@@ -226,10 +227,11 @@
     .soc-stat:nth-child(odd) { border-right: 1px solid var(--line-2); }
     .soc-stat:nth-child(even) { border-right: none; }
     .part-card { padding: 24px 20px; }
-    .cta-layout { flex-direction: column; }
-    .cta-main { flex-direction: column; align-items: flex-start; padding-right: 0; border-right: none; padding-bottom: 28px; border-bottom: 1px solid var(--line); width: 100%; }
-    .cta-order-img { width: 120px; }
-    .cta-feats { padding-left: 0; padding-top: 28px; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .cta-layout { flex-direction: column; align-items: stretch; }
+    .cta-img-col { width: 100%; padding-right: 0; border-right: none; padding-bottom: 24px; border-bottom: 1px solid var(--line); justify-content: center; }
+    .cta-order-img { width: 120px; height: auto; }
+    .cta-main-text { max-width: 100%; padding: 24px 0; border-right: none; border-bottom: 1px solid var(--line); }
+    .cta-feats { padding-left: 0; padding-top: 24px; grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .btn-more { align-self: start; }
     .foot-top { flex-direction: column; gap: 32px; }
     .foot-nav-cols { flex-direction: row; gap: 16px; justify-content: space-between; }
@@ -276,7 +278,7 @@
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="hero-stat-icon">
-              <img src="../материалы/фото/icon-russia.svg" alt="" style="width:100%;height:100%;display:block"/>
+              <img src="../материалы/фото/icon-russia.svg" alt="" style="width:130%;height:130%;display:block;margin:-15%"/>
             </div>
             <div class="hero-stat-text">Онлайн-опросы<br>по всей России</div>
           </div>
@@ -439,13 +441,14 @@
 <div class="cta-section" id="cta">
   <div class="wrap">
     <div class="cta-layout">
-      <div class="cta-main">
+      <div class="cta-img-col">
         <img src="../материалы/фото/icon-order.png" class="cta-order-img" alt=""/>
-        <div class="cta-main-text">
-          <div class="cta-title">Закажи исследование</div>
-          <p class="cta-desc">Нужны данные для принятия решений? Мы проведём исследование под ваши задачи и предоставим подробный аналитический отчёт.</p>
-          <a href="../#contacts" class="btn-more">Узнать больше →</a>
-        </div>
+      </div>
+      <div class="cta-main-text">
+        <div class="cta-title">Закажи исследование</div>
+        <p class="cta-desc">Нужны данные для принятия решений? Мы проведём исследование под ваши задачи и предоставим подробный аналитический отчёт.</p>
+        <div class="cta-spacer"></div>
+        <a href="../#contacts" class="btn-more">Узнать больше →</a>
       </div>
       <div class="cta-feats">
         <div class="cta-feat">
@@ -458,7 +461,7 @@
             </svg>
           </div>
           <div class="cta-feat-name">Индивидуальный подход</div>
-          <div class="cta-feat-text">Разрабатываем программу исследования под ваши цели и задачи.</div>
+          <div class="cta-feat-text">Разрабатываем программу исследования под ваши цели и задачи.</div>
         </div>
         <div class="cta-feat">
           <div class="cta-feat-icon">
@@ -470,14 +473,14 @@
             </svg>
           </div>
           <div class="cta-feat-name">Полный цикл работ</div>
-          <div class="cta-feat-text">От разработки анкеты до аналитики и презентации результатов.</div>
+          <div class="cta-feat-text">От разработки анкеты до аналитики и презентации результатов.</div>
         </div>
         <div class="cta-feat">
           <div class="cta-feat-icon">
             <img src="../материалы/фото/icon-team.svg" alt="" style="width:100%;height:100%;display:block"/>
           </div>
           <div class="cta-feat-name">Профессиональная команда</div>
-          <div class="cta-feat-text">Опытные социологи и аналитики с многолетним опытом работы.</div>
+          <div class="cta-feat-text">Опытные социологи и аналитики с многолетним опытом работы.</div>
         </div>
         <div class="cta-feat">
           <div class="cta-feat-icon">
@@ -487,7 +490,7 @@
             </svg>
           </div>
           <div class="cta-feat-name">Сжатые сроки</div>
-          <div class="cta-feat-text">Оперативно проводим исследования и готовим результаты.</div>
+          <div class="cta-feat-text">Оперативно проводим исследования и готовим результаты.</div>
         </div>
       </div>
     </div>
