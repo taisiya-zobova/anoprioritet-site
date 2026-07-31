@@ -46,7 +46,7 @@
   .page-header p { font-size: 14px; color: var(--ink-2); line-height: 1.65; max-width: 500px; margin: 0; }
 
   /* MAIN TWO-COLUMN LAYOUT */
-  .soc-layout { display: grid; grid-template-columns: 1fr 380px; gap: 24px; padding-bottom: 60px; }
+  .soc-layout { display: grid; grid-template-columns: 1fr 380px; gap: 24px; padding-top: 48px; padding-bottom: 60px; }
 
   /* LEFT CARD */
   .soc-card { border: 1px solid var(--line); background: var(--bg); }
@@ -74,16 +74,16 @@
   .soc-info-text { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
 
   /* HERO SOC */
-  .hero-soc { background: var(--bg-tint); border-bottom: 1px solid var(--line); }
+  .hero-soc { background: var(--bg); border-bottom: 1px solid var(--line); }
   .hero-soc-inner { display: grid; grid-template-columns: 1fr 480px; gap: 48px; align-items: center; padding: 64px 0 56px; }
   .hero-soc h1 { font-family: var(--serif); font-weight: 400; font-size: 38px; color: var(--ink); margin: 0 0 14px; letter-spacing: -0.01em; }
   .hero-soc-lead { font-size: 14px; color: var(--ink-2); line-height: 1.65; margin: 0 0 40px; }
   .hero-soc-img { width: 100%; height: auto; display: block; }
   .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .hero-stat { display: flex; align-items: center; gap: 12px; }
-  .hero-stat-icon { width: 30px; height: 30px; flex-shrink: 0; color: var(--accent); }
+  .hero-stat { display: flex; align-items: center; gap: 14px; background: rgba(37,99,168,0.07); border: 1px solid rgba(37,99,168,0.25); padding: 14px 18px; }
+  .hero-stat-icon { width: 36px; height: 36px; flex-shrink: 0; color: var(--accent); }
   .hero-stat-icon img, .hero-stat-icon svg { width: 100%; height: 100%; display: block; }
-  .hero-stat-text { font-size: 12.5px; color: var(--ink-2); line-height: 1.4; }
+  .hero-stat-text { font-size: 14px; color: var(--ink-2); line-height: 1.4; }
 
   /* ABOUT ROW */
   .about-row { display: flex; gap: 20px; align-items: stretch; padding: 28px 32px; border-bottom: 1px solid var(--line-2); }
@@ -116,19 +116,20 @@
   .btn-participate:hover { background: var(--accent-soft); }
 
   /* CTA SECTION */
-  .cta-section { border-top: 1px solid var(--line); background: var(--bg-tint); }
-  .cta-layout { display: flex; align-items: stretch; max-width: 1200px; margin: 0 auto; }
-  .cta-order-col { flex-shrink: 0; width: 240px; background: rgba(37,99,168,0.07); display: flex; align-items: center; justify-content: center; padding: 40px 32px; }
-  .cta-order-col img { width: 100%; height: auto; display: block; }
-  .cta-right { flex: 1; padding: 52px 28px 60px 52px; display: flex; flex-direction: column; }
+  .cta-section { border-top: 1px solid var(--line); background: var(--bg-tint); padding: 52px 0 64px; }
+  .cta-layout { display: flex; align-items: center; gap: 0; }
+  .cta-main { display: flex; align-items: center; gap: 28px; padding-right: 48px; border-right: 1px solid var(--line); flex-shrink: 0; }
+  .cta-order-img { width: 180px; height: auto; display: block; flex-shrink: 0; }
+  .cta-main-text { display: flex; flex-direction: column; min-width: 200px; }
   .cta-title { font-family: var(--serif); font-weight: 400; font-size: 24px; color: var(--ink); margin: 0 0 12px; }
   .cta-desc { font-size: 13px; color: var(--ink-2); line-height: 1.7; margin: 0 0 22px; }
   .btn-more { display: inline-flex; align-items: center; gap: 6px; padding: 11px 22px; border: 1px solid var(--accent); color: var(--accent); font-size: 13px; font-family: var(--sans); cursor: pointer; background: transparent; transition: background 0.15s, color 0.15s; text-decoration: none; white-space: nowrap; }
   .btn-more:hover { background: var(--accent); color: #fff; }
-  .cta-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; padding-top: 8px; }
+  .cta-feats { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-left: 48px; }
   .cta-feat { display: flex; flex-direction: column; gap: 10px; }
   .cta-feat-icon { width: 36px; height: 36px; color: var(--accent); }
   .cta-feat-icon svg { width: 100%; height: 100%; }
+  .cta-feat-icon img { width: 100%; height: 100%; display: block; }
   .cta-feat-name { font-size: 13.5px; font-weight: 500; color: var(--ink); }
   .cta-feat-text { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
 
@@ -217,10 +218,10 @@
     .soc-stat:nth-child(even) { border-right: none; }
     .part-card { padding: 24px 20px; }
     .cta-layout { flex-direction: column; }
-    .cta-order-col { width: 100%; height: 120px; }
-    .cta-right { padding: 28px 16px 40px; }
+    .cta-main { flex-direction: column; align-items: flex-start; padding-right: 0; border-right: none; padding-bottom: 28px; border-bottom: 1px solid var(--line); width: 100%; }
+    .cta-order-img { width: 120px; }
+    .cta-feats { padding-left: 0; padding-top: 28px; grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .btn-more { align-self: start; }
-    .cta-features { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .foot-top { flex-direction: column; gap: 32px; }
     .foot-nav-cols { flex-direction: row; gap: 16px; justify-content: space-between; }
     .foot-col:last-child { flex: 0 0 auto; min-width: 162px; }
@@ -422,15 +423,17 @@
 
 <!-- CTA SECTION -->
 <div class="cta-section">
-  <div class="cta-layout">
-    <div class="cta-order-col">
-      <img src="../материалы/фото/icon-order.svg" alt="" style="width:100%;display:block"/>
-    </div>
-    <div class="cta-right">
-      <div class="cta-title">Закажи исследование</div>
-      <p class="cta-desc">Нужны данные для принятия решений? Мы проведём исследование под ваши задачи и предоставим подробный аналитический отчёт.</p>
-      <a href="../#contacts" class="btn-more">Узнать больше →</a>
-      <div class="cta-features">
+  <div class="wrap">
+    <div class="cta-layout">
+      <div class="cta-main">
+        <img src="../материалы/фото/icon-order.png" class="cta-order-img" alt=""/>
+        <div class="cta-main-text">
+          <div class="cta-title">Закажи исследование</div>
+          <p class="cta-desc">Нужны данные для принятия решений? Мы проведём исследование под ваши задачи и предоставим подробный аналитический отчёт.</p>
+          <a href="../#contacts" class="btn-more">Узнать больше →</a>
+        </div>
+      </div>
+      <div class="cta-feats">
         <div class="cta-feat">
           <div class="cta-feat-icon">
             <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.3">
